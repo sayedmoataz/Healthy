@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:word_of_mouth/app_route.dart';
+import 'package:word_of_mouth/app_root.dart';
 
 
 void main() {
