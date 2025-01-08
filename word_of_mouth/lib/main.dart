@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_route.dart';
+import 'app_root.dart';
 import 'core/services/cache_helper.dart';
 
 void main() async{
@@ -8,4 +8,3 @@ void main() async{
   CacheHelper.init();
   runApp(const MyAppRoot());
 }
-
