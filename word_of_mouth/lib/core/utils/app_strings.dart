@@ -12,19 +12,19 @@ class AppStrings {
   static const String bottom = 'bottom';
 
   static const List<String> onBoardingTitles = [
-    'Find the item you’ve \nbeen looking for',
-    'Get those shopping \nbags filled',
-    'Fast & secure \npayment',
-    'Package tracking',
-    'Nearby stores',
+    'أكثر من 2000ماشية في مزارعنا الخاصة',
+    'منتجات ألبان طبيعية 100%',
+    'جودة عالية و طعم لا يقاوم',
+    'تحكم منتظم و مراقبة للجودة',
+    'وحدة إنتاجية معقمة خالية من البكتيريا',
   ];
 
   static const List<String> onBoardingDescriptions = [
-    'Here you’ll see rich varieties of goods, carefully classified for seamless browsing experience.',
-    'Add any item you want to your cart, or save it on your wishlist, so you don’t miss it in your future purchases.',
-    'There are many payment options available for your ease.',
-    'In particular, Shoplon can pack your orders, and help you seamlessly manage your shipments.',
-    'Easily track nearby shops, browse through their items and get information about their prodcuts.',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
   ];
 
   static const String welcom = 'Welcome back!';
@@ -60,5 +60,6 @@ class AppStrings {
   static const String off = '% OFF';
 
   static const String saleQuote = 'Super Flash Sale \n50% Off';
+  static const String addToCart = 'addToCart';
 
 }

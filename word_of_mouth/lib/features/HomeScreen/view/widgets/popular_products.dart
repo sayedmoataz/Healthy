@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/components/products/product_card.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/routing/app_routes.dart';
 import '../../models/product_model.dart';
 
 class PopularProducts extends StatelessWidget {
@@ -41,7 +43,9 @@ class PopularProducts extends StatelessWidget {
                 price: demoPopularProducts[index].price,
                 priceAfetDiscount: demoPopularProducts[index].priceAfetDiscount,
                 dicountpercent: demoPopularProducts[index].dicountpercent,
-                press: () {},
+                press: () {
+                  Get.toNamed(AppRoutes.productScreen);
+                },
               ),
             ),
           ),

@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
 
 import '../../../features/HomeScreen/view/pages/HomeScreen_page.dart';
+import '../../../features/NavigationBar/controller/NavigationBar_bindings.dart';
+import '../../../features/NavigationBar/views/NavigationBar_page.dart';
+import '../../../features/Product_screen/controllers/Product_screen_bindings.dart';
+import '../../../features/Product_screen/view/pages/Product_screen_page.dart';
 import '../../../features/auth/controller/auth_binding.dart';
 import '../../../features/auth/views/pages/forget_password.dart';
 import '../../../features/auth/views/pages/login.dart';
@@ -29,6 +33,16 @@ class AppPages {
       name: AppRoutes.homeScreen,
       page: () => const HomeScreen(),
       binding: AuthBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.productScreen,
+      page: () => const ProductScreenPage(),
+      binding: ProductScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.landingScreen,
+      page: () => const LandingScreen(),
+      binding: NavigationBarBindings(),
     ),
   ];
 }

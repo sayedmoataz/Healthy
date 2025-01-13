@@ -51,7 +51,7 @@ class LoginPage extends StatelessWidget {
                         : AppConstants.defaultPadding,
                   ),
                   ElevatedButton(
-                    onPressed: () => Get.toNamed(AppRoutes.homeScreen),
+                    onPressed: () => Get.toNamed(AppRoutes.landingScreen),
                     child: const Text(AppStrings.login),
                   ),
                   SizedBox(height: 5.h),
