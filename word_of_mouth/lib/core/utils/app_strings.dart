@@ -44,13 +44,15 @@ class AppStrings {
       'Enter Your E-mail Address To Reset Your Password';
 
   static const String getStarted = 'Let’s get started!';
-  static const String getStartedDescriptions = 'Please enter your valid data in order to create an account.';
+  static const String getStartedDescriptions =
+      'Please enter your valid data in order to create an account.';
 
   static const String agreement = 'I agree with the';
   static const String terms = ' Terms of service ';
   static const String privacy = '& privacy policy.';
-  
+
   static const String categories = 'Categories';
+  static const String relatedProducts = 'Related Products';
   static const String popularCategories = 'Popular products';
   static const String flashSale = 'Flash Sale';
   static const String newArrival = 'New \narrival';
@@ -60,6 +62,7 @@ class AppStrings {
   static const String off = '% OFF';
 
   static const String saleQuote = 'Super Flash Sale \n50% Off';
-  static const String addToCart = 'addToCart';
-
+  static const String addToCart = 'Add To Cart';
+  static const String findSomeThing = 'Find something...';
+  static const String shopNow = 'SHOP NOW';
 }

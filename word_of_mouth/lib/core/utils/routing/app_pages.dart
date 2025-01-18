@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../features/CategoriesScreen/controllers/CategoriesScreen_bindings.dart';
+import '../../../features/CategoriesScreen/view/pages/CategoriesScreen_page.dart';
 import '../../../features/HomeScreen/view/pages/HomeScreen_page.dart';
 import '../../../features/NavigationBar/controller/NavigationBar_bindings.dart';
 import '../../../features/NavigationBar/views/NavigationBar_page.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: AppRoutes.landingScreen,
       page: () => const LandingScreen(),
       binding: NavigationBarBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.categoriesScreen,
+      page: () => CategoriesScreenPage(),
+      binding: CategoriesScreenBindings(),
     ),
   ];
 }

@@ -14,4 +14,5 @@ class AppRoutes {
   static const String homeScreen = '/homeScreen';
   static const String forgetPassword = '/forgetPassword';
   static const String productScreen = '/productScreen';
+  static const String categoriesScreen = '/categoriesScreen';
 }

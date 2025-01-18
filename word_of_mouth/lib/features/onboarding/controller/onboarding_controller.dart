@@ -9,7 +9,7 @@ import '../model/onboarding_model.dart';
 
 class OnboardingController extends GetxController {
   var selectedPageIndex = 0.obs;
-  var pageController = PageController();
+  late PageController pageController;
   bool get isFirstPage => selectedPageIndex.value == 0;
   bool get isLastPage => selectedPageIndex.value == onboardingPages.length - 1;
 
@@ -25,12 +25,14 @@ class OnboardingController extends GetxController {
     super.onClose();
   }
 
-  nextAction() {
+  void nextAction() {
     if (isLastPage) {
       Get.offNamed(AppRoutes.loginScreen);
     } else {
       pageController.nextPage(
-          duration: AppConstants.defaultDuration, curve: Curves.ease);
+        duration: AppConstants.defaultDuration,
+        curve: Curves.ease,
+      );
     }
   }
 

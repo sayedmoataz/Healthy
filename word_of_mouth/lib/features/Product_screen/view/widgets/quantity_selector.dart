@@ -14,17 +14,30 @@ class QuantitySelector extends StatelessWidget {
     return Obx(() => Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            
             IconButton(
               icon: const Icon(Icons.remove),
-              onPressed: controller.decrement,
+              onPressed: controller.quantity > 1
+                  ? controller.decrement
+                  : null, // Disable if quantity is 1
             ),
-            Text(
-              '${controller.quantity}',
-              style: TextStyle(fontSize: 20.sp),
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Text(
+                '${controller.quantity}',
+                style: TextStyle(fontSize: 20.sp),
+              ),
             ),
             IconButton(
               icon: const Icon(Icons.add),
-              onPressed: controller.increment,
+              onPressed: controller.quantity < 10
+                  ? controller.increment
+                  : null, // Disable if quantity is 10
             ),
           ],
         ));
