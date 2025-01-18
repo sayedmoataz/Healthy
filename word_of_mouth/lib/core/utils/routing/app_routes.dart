@@ -15,4 +15,6 @@ class AppRoutes {
   static const String forgetPassword = '/forgetPassword';
   static const String productScreen = '/productScreen';
   static const String categoriesScreen = '/categoriesScreen';
+  static const String cartScreen = '/cartScreen';
+  static const String infoScreen = '/infoScreen';
 }

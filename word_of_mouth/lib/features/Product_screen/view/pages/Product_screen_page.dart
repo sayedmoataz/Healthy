@@ -7,7 +7,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/routing/app_routes.dart';
-import '../../../CategoriesScreen/view/widgets/custom_app_bar.dart';
+import '../../../../core/components/custom_app_bar.dart';
 import '../../../HomeScreen/models/product_model.dart';
 import '../../../HomeScreen/view/widgets/offers_carousel.dart';
 import '../../controllers/Product_screen_controller.dart';
@@ -43,7 +43,7 @@ class ProductScreenPage extends GetView<ProductScreenController> {
               child: Padding(
                 padding: const EdgeInsets.all(AppConstants.defaultPadding),
                 child: Text(
-                  'عصير برتقال طبيعي 100%، مستخلص مباشرة من أفضل أنواع البرتقال الطازج. يتميز بمذاقه المنعش والطبيعي، دون أي إضافات صناعية أو سكر مضاف. مثالي لبدء يومك بنشاط أو كوجبة خفيفة صحية. كل كوب يحتوي على 250 مل من الفيتامينات والطاقة الطبيعية.',
+                  AppStrings.producrDescripation,                  
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 18.sp,

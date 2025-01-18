@@ -51,6 +51,7 @@ class AppStrings {
   static const String terms = ' Terms of service ';
   static const String privacy = '& privacy policy.';
 
+  static const String empty = 'Empty';
   static const String categories = 'Categories';
   static const String relatedProducts = 'Related Products';
   static const String popularCategories = 'Popular products';
@@ -62,7 +63,18 @@ class AppStrings {
   static const String off = '% OFF';
 
   static const String saleQuote = 'Super Flash Sale \n50% Off';
+  static const String cart = 'Cart';
   static const String addToCart = 'Add To Cart';
   static const String findSomeThing = 'Find something...';
   static const String shopNow = 'SHOP NOW';
+  static const String reviewOrder = 'Review your order';
+  static const String couponCode = 'Type coupon code';
+  static const String producrDescripation =
+      'عصير برتقال طبيعي 100%، مستخلص مباشرة من أفضل أنواع البرتقال الطازج. يتميز بمذاقه المنعش والطبيعي، دون أي إضافات صناعية أو سكر مضاف. مثالي لبدء يومك بنشاط أو كوجبة خفيفة صحية. كل كوب يحتوي على 250 مل من الفيتامينات والطاقة الطبيعية.';
+  static const String orderSummary = 'Order Summary';
+  static const String subTotal = 'Subtotal';
+  static const String shippingFee = 'Shipping Fee';
+  static const String totalPrice = 'Total (Include of VAT)';
+  static const String estimatedVAT = 'Estimated VAT';
+  static const String checkout = 'Checkout';
 }

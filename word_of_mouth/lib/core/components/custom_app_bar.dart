@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/constants.dart';
+import '../utils/app_colors.dart';
+import '../utils/constants.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String title;
+  final IconData? icon;
   const CustomAppBar({ 
     required this.title,
+    this.icon,
     super.key
   });
 
@@ -32,10 +34,12 @@ class CustomAppBar extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.shopping_bag_outlined, color: AppColors.blackColor),
+          if(icon != null )...{
+            IconButton(
+            icon: Icon(icon, color: AppColors.blackColor),
             onPressed: () {},
           ),
+          }
         ],
       ),
     );

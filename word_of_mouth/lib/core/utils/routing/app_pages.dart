@@ -1,8 +1,12 @@
 import 'package:get/get.dart';
 
+import '../../../features/CartScreen/controllers/CartScreen_bindings.dart';
+import '../../../features/CartScreen/view/pages/CartScreen_page.dart';
 import '../../../features/CategoriesScreen/controllers/CategoriesScreen_bindings.dart';
 import '../../../features/CategoriesScreen/view/pages/CategoriesScreen_page.dart';
 import '../../../features/HomeScreen/view/pages/HomeScreen_page.dart';
+import '../../../features/InfoScreen/controllers/InfoScreen_bindings.dart';
+import '../../../features/InfoScreen/views/pages/InfoScreen_page.dart';
 import '../../../features/NavigationBar/controller/NavigationBar_bindings.dart';
 import '../../../features/NavigationBar/views/NavigationBar_page.dart';
 import '../../../features/Product_screen/controllers/Product_screen_bindings.dart';
@@ -50,6 +54,16 @@ class AppPages {
       name: AppRoutes.categoriesScreen,
       page: () => CategoriesScreenPage(),
       binding: CategoriesScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.cartScreen,
+      page: () => const CartScreenPage(),
+      binding: CartScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.infoScreen,
+      page: () => const InfoScreenPage(),
+      binding: InfoScreenBindings(),
     ),
   ];
 }

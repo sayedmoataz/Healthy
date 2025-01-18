@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/routing/app_routes.dart';
 import '../../CategoriesScreen/view/pages/CategoriesScreen_page.dart';
 import '../../HomeScreen/view/pages/HomeScreen_page.dart';
+import '../../InfoScreen/views/pages/InfoScreen_page.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -17,6 +20,8 @@ class _LandingScreenState extends State<LandingScreen> {
   static final List<Widget> _pages = <Widget>[
     const HomeScreen(),
     CategoriesScreenPage(),
+    CategoriesScreenPage(),
+    const InfoScreenPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -57,7 +62,7 @@ class _LandingScreenState extends State<LandingScreen> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.primaryColor,
-          onPressed: () {},
+          onPressed: () => Get.toNamed(AppRoutes.cartScreen),
           child: Icon(
             Icons.shopping_cart_checkout,
             color: AppColors.whiteColor,
