@@ -17,4 +17,10 @@ class AppRoutes {
   static const String categoriesScreen = '/categoriesScreen';
   static const String cartScreen = '/cartScreen';
   static const String infoScreen = '/infoScreen';
+  static const String editProfileScreen = '/editProfileScreen';
+  static const String aboutUsScreen = '/aboutUsScreen';
+  static const String faqScreen = '/faqScreen';
+  static const String contactUsScreen = '/contactUsScreen';
+  static const String privacyPolicyScreen = '/privacyPolicyScreen';
+  
 }

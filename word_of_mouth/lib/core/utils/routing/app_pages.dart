@@ -7,6 +7,11 @@ import '../../../features/CategoriesScreen/view/pages/CategoriesScreen_page.dart
 import '../../../features/HomeScreen/view/pages/HomeScreen_page.dart';
 import '../../../features/InfoScreen/controllers/InfoScreen_bindings.dart';
 import '../../../features/InfoScreen/views/pages/InfoScreen_page.dart';
+import '../../../features/InfoScreen/views/pages/menu_screen/about_us.dart';
+import '../../../features/InfoScreen/views/pages/menu_screen/contact_us.dart';
+import '../../../features/InfoScreen/views/pages/menu_screen/edit_profile.dart';
+import '../../../features/InfoScreen/views/pages/menu_screen/faq.dart';
+import '../../../features/InfoScreen/views/pages/menu_screen/privacy_policy.dart';
 import '../../../features/NavigationBar/controller/NavigationBar_bindings.dart';
 import '../../../features/NavigationBar/views/NavigationBar_page.dart';
 import '../../../features/Product_screen/controllers/Product_screen_bindings.dart';
@@ -63,6 +68,31 @@ class AppPages {
     GetPage(
       name: AppRoutes.infoScreen,
       page: () => const InfoScreenPage(),
+      binding: InfoScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.editProfileScreen,
+      page: () => const EditProfileScreen(),
+      binding: InfoScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.aboutUsScreen,
+      page: () => const AboutUsScreen(),
+      binding: InfoScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.faqScreen,
+      page: () => const FAQScreen(),
+      binding: InfoScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.contactUsScreen,
+      page: () => const ContactUsScreen(),
+      binding: InfoScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.privacyPolicyScreen,
+      page: () => const PrivacyPolicyScreen(),
       binding: InfoScreenBindings(),
     ),
   ];

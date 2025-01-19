@@ -77,4 +77,12 @@ class AppStrings {
   static const String totalPrice = 'Total (Include of VAT)';
   static const String estimatedVAT = 'Estimated VAT';
   static const String checkout = 'Checkout';
+  static const String editProfile = 'Edit Profile';
+  static const String aboutUs = 'About Us';
+  static const String faq = 'FAQ';
+  static const String contactUs = 'Contact Us';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String rateUs = 'Rate Us';
+  static const String shareApp = 'Share App';
+  static const String logout = 'Logout';
 }

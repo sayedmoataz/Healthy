@@ -13,6 +13,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(AppConstants.defaultPadding),
@@ -41,6 +42,7 @@ class ForgetPassword extends StatelessWidget {
             ),
             const Text(AppStrings.recoveryPasswordDescription),
             CustomTextField(
+              controller: emailController,
               onSaved: (emal) {},
               validator: Validators.emaildValidator.call,
               keyboardType: TextInputType.emailAddress,
