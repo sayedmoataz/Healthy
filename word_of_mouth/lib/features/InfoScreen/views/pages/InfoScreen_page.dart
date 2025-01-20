@@ -16,65 +16,62 @@ class InfoScreenPage extends GetView<InfoScreenController> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.all(AppConstants.defaultPadding),
-        child: Column(
-          children: [
-            const CustomAppBar(title: 'Menu'),
-            SizedBox(height: 20.sp),
-            Container(
-              decoration: BoxDecoration(
-                color: AppColors.whiteColor,
-                borderRadius:
-                    BorderRadius.circular(AppConstants.defaultBorderRadious),
-                border: Border.all(color: AppColors.greyColor),
-              ),
-              child: Column(
-                children: [
-                  ListTile(
-                    title: const Text(AppStrings.editProfile),
-                    onTap: () => Get.toNamed(AppRoutes.editProfileScreen),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text(AppStrings.aboutUs),
-                    onTap: () => Get.toNamed(AppRoutes.aboutUsScreen),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text(AppStrings.faq),
-                    onTap: () => Get.toNamed(AppRoutes.faqScreen),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text(AppStrings.contactUs),
-                    onTap: () => Get.toNamed(AppRoutes.contactUsScreen),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text(AppStrings.privacyPolicy),
-                    onTap: () => Get.toNamed(AppRoutes.privacyPolicyScreen),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text(AppStrings.rateUs),
-                    onTap: () {},
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text(AppStrings.shareApp),
-                    onTap: () {},
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: const Text(AppStrings.logout),
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+      child: Column(
+        children: [
+          const CustomAppBar(title: 'Menu', backable: false),
+          SizedBox(height: 20.sp),
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              borderRadius:
+                  BorderRadius.circular(AppConstants.defaultBorderRadious),
+              border: Border.all(color: AppColors.greyColor),
+            ),
+            child: Column(
+              children: [
+                ListTile(
+                  title: const Text(AppStrings.editProfile),
+                  onTap: () => Get.toNamed(AppRoutes.editProfileScreen),
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text(AppStrings.aboutUs),
+                  onTap: () => Get.toNamed(AppRoutes.aboutUsScreen),
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text(AppStrings.faq),
+                  onTap: () => Get.toNamed(AppRoutes.faqScreen),
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text(AppStrings.contactUs),
+                  onTap: () => Get.toNamed(AppRoutes.contactUsScreen),
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text(AppStrings.privacyPolicy),
+                  onTap: () => Get.toNamed(AppRoutes.privacyPolicyScreen),
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text(AppStrings.rateUs),
+                  onTap: () {},
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text(AppStrings.shareApp),
+                  onTap: () {},
+                ),
+                const Divider(),
+                ListTile(
+                  title: const Text(AppStrings.logout),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     ));
   }

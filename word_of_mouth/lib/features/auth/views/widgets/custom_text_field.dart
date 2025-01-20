@@ -32,7 +32,7 @@ class CustomTextField extends StatelessWidget {
       textInputAction: TextInputAction.next,
       keyboardType: keyboardType,
       obscureText: keyboardType == TextInputType.visiblePassword,
-      maxLines: maxLine,
+      maxLines: keyboardType != TextInputType.visiblePassword ? maxLine : 1,
       decoration: InputDecoration(
         disabledBorder: OutlineInputBorder(
           borderRadius:

@@ -20,7 +20,7 @@ class CategoriesScreenPage extends StatelessWidget {
         child: Column(
           children: [
             // App Bar
-            const CustomAppBar(title: AppStrings.categories, icon: Icons.shopping_bag_outlined),
+            const CustomAppBar(title: AppStrings.categories, icon: Icons.shopping_bag_outlined, backable: false),
             // Search Bar
             CustomSearchField(controller: controller),
 

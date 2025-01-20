@@ -8,11 +8,8 @@ import '../utils/constants.dart';
 class CustomAppBar extends StatelessWidget {
   final String title;
   final IconData? icon;
-  const CustomAppBar({ 
-    required this.title,
-    this.icon,
-    super.key
-  });
+  final bool backable;
+  const CustomAppBar({required this.backable ,required this.title, this.icon, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +17,12 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsets.all(AppConstants.defaultPadding),
       child: Row(
         children: [
-          IconButton(
+          if(backable)...{
+            IconButton(
             icon: const Icon(Icons.arrow_back, color: AppColors.blackColor),
             onPressed: () => Get.back(),
           ),
+          },
           Expanded(
             child: Text(
               title,
@@ -34,11 +33,11 @@ class CustomAppBar extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
           ),
-          if(icon != null )...{
+          if (icon != null) ...{
             IconButton(
-            icon: Icon(icon, color: AppColors.blackColor),
-            onPressed: () {},
-          ),
+              icon: Icon(icon, color: AppColors.blackColor),
+              onPressed: () {},
+            ),
           }
         ],
       ),

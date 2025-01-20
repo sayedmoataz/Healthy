@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../../features/NavigationBar/views/NavigationBar_page.dart';
+import '../../../features/auth/views/pages/login.dart';
 import '../../../features/onboarding/view/pages/on_boaerding.dart';
 
 class AppRoutes {
   //? Routes as a widget
-  static Widget get onBoarding => OnBoarding();
+  static Widget get onBoardingScreen => OnBoarding();
+  static Widget get LoginScreen => const LoginPage();
+  static Widget get LandingWidget => const LandingScreen();
 
   //? Routes as a string
   static const String splashScreen = '/splashScreen';
@@ -22,5 +26,5 @@ class AppRoutes {
   static const String faqScreen = '/faqScreen';
   static const String contactUsScreen = '/contactUsScreen';
   static const String privacyPolicyScreen = '/privacyPolicyScreen';
-  
+  static const String allOrdersScreen = '/allOrdersScreen';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/services/cache_helper.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_strings.dart';
 import '../../../core/utils/constants.dart';
@@ -27,6 +28,7 @@ class OnboardingController extends GetxController {
 
   void nextAction() {
     if (isLastPage) {
+      CacheHelper.putData(key: AppConstants.skipOnBoarding,value: true);
       Get.offNamed(AppRoutes.loginScreen);
     } else {
       pageController.nextPage(

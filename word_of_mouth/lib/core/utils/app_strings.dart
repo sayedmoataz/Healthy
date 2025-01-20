@@ -64,6 +64,7 @@ class AppStrings {
 
   static const String saleQuote = 'Super Flash Sale \n50% Off';
   static const String cart = 'Cart';
+  static const String orders = 'My Orders';
   static const String addToCart = 'Add To Cart';
   static const String findSomeThing = 'Find something...';
   static const String shopNow = 'SHOP NOW';

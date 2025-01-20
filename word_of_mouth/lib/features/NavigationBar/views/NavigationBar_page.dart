@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../core/utils/app_colors.dart';
 import '../../../core/utils/routing/app_routes.dart';
+import '../../AllOrdersScreen/views/pages/AllOrdersScreen_page.dart';
 import '../../CategoriesScreen/view/pages/CategoriesScreen_page.dart';
 import '../../HomeScreen/view/pages/HomeScreen_page.dart';
 import '../../InfoScreen/views/pages/InfoScreen_page.dart';
@@ -20,7 +21,7 @@ class _LandingScreenState extends State<LandingScreen> {
   static final List<Widget> _pages = <Widget>[
     const HomeScreen(),
     CategoriesScreenPage(),
-    CategoriesScreenPage(),
+    const AllOrdersScreenPage(),
     const InfoScreenPage(),
   ];
 

@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/services/cache_helper.dart';
 import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/routing/app_routes.dart';
@@ -18,8 +20,8 @@ class OnBoarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: SizedBox(
-        height: 60,
-        width: 60,
+        height: 60.h,
+        width: 60.w,
         child: ElevatedButton(
           onPressed: () => _controller.nextAction(),
           style: ElevatedButton.styleFrom(
@@ -27,8 +29,8 @@ class OnBoarding extends StatelessWidget {
           ),
           child: SvgPicture.asset(
             AppAssets.arrowRight,
-            colorFilter: const ColorFilter.mode(
-              Colors.white,
+            colorFilter: ColorFilter.mode(
+              AppColors.whiteColor,
               BlendMode.srcIn,
             ),
           ),
@@ -57,7 +59,7 @@ class OnBoarding extends StatelessWidget {
                   // Dark overlay
                   Positioned.fill(
                     child: Container(
-                      color: Colors.black.withValues(alpha: 0.5),
+                      color: AppColors.blackColor.withValues(alpha: 0.5),
                     ),
                   ),
                   // Content
@@ -66,20 +68,27 @@ class OnBoarding extends StatelessWidget {
                         horizontal: AppConstants.defaultPadding),
                     child: Column(
                       children: [
-                        SizedBox(height: 25.h),
+                        SizedBox(height: 30.h),
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
                             onPressed: () {
+                              CacheHelper.putData(
+                                  key: AppConstants.skipOnBoarding, value: true);
                               Get.offNamed(AppRoutes.loginScreen);
                             },
+                            style: TextButton.styleFrom(
+                              backgroundColor: AppColors.primaryColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    AppConstants.defaultBorderRadious),
+                              ),
+                            ),
                             child: Text(
                               AppStrings.skip,
                               style: TextStyle(
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .color,
+                                color: AppColors.whiteColor,
+                                fontSize: 14.sp,
                               ),
                             ),
                           ),
@@ -89,8 +98,8 @@ class OnBoarding extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
+                                padding:
+                                    EdgeInsets.symmetric(horizontal: 20.0.h),
                                 child: Column(
                                   children: [
                                     Text(
@@ -98,16 +107,16 @@ class OnBoarding extends StatelessWidget {
                                       style: Theme.of(context)
                                           .textTheme
                                           .headlineMedium!
-                                          .copyWith(color: Colors.white),
+                                          .copyWith(color: AppColors.whiteColor),
                                       textAlign: TextAlign.center,
                                     ),
-                                    const SizedBox(height: 10),
+                                    SizedBox(height: 10.h),
                                     Text(
                                       page.description,
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyLarge!
-                                          .copyWith(color: Colors.white70),
+                                          .copyWith(color: AppColors.whileColor80),
                                       textAlign: TextAlign.center,
                                     ),
                                   ],

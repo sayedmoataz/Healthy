@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../features/AllOrdersScreen/controller/AllOrdersScreen_bindings.dart';
+import '../../../features/AllOrdersScreen/views/pages/AllOrdersScreen_page.dart';
 import '../../../features/CartScreen/controllers/CartScreen_bindings.dart';
 import '../../../features/CartScreen/view/pages/CartScreen_page.dart';
 import '../../../features/CategoriesScreen/controllers/CategoriesScreen_bindings.dart';
@@ -94,6 +96,11 @@ class AppPages {
       name: AppRoutes.privacyPolicyScreen,
       page: () => const PrivacyPolicyScreen(),
       binding: InfoScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.allOrdersScreen,
+      page: () => const AllOrdersScreenPage(),
+      binding: AllOrdersScreenBindings(),
     ),
   ];
 }

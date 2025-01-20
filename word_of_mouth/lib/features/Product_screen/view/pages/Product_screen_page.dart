@@ -22,7 +22,7 @@ class ProductScreenPage extends GetView<ProductScreenController> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const CustomAppBar(title: 'ProductName'),
+            const CustomAppBar(title: 'ProductName', backable: true),
             const OffersCarousel(),
             Align(
               alignment: Alignment.centerRight,
