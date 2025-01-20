@@ -12,11 +12,14 @@ class LogInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {    
     final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     return Form(
       key: _loginFormKey,
       child: Column(
         children: [
           CustomTextField(
+            controller: emailController,
             onSaved: (emal) {},
             validator: Validators.emaildValidator.call,
             keyboardType: TextInputType.emailAddress,
@@ -25,6 +28,7 @@ class LogInForm extends StatelessWidget {
           ),
           const SizedBox(height: AppConstants.defaultPadding),
           CustomTextField(
+            controller: passwordController,
             onSaved: (pass) {},
             validator: Validators.passwordValidator.call,
             hintText: AppStrings.password,

@@ -5,6 +5,6 @@ import 'core/services/cache_helper.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  CacheHelper.init();
+  await CacheHelper.init();
   runApp(const MyAppRoot());
 }

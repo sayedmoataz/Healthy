@@ -12,19 +12,19 @@ class AppStrings {
   static const String bottom = 'bottom';
 
   static const List<String> onBoardingTitles = [
-    'Find the item you’ve \nbeen looking for',
-    'Get those shopping \nbags filled',
-    'Fast & secure \npayment',
-    'Package tracking',
-    'Nearby stores',
+    'أكثر من 2000ماشية في مزارعنا الخاصة',
+    'منتجات ألبان طبيعية 100%',
+    'جودة عالية و طعم لا يقاوم',
+    'تحكم منتظم و مراقبة للجودة',
+    'وحدة إنتاجية معقمة خالية من البكتيريا',
   ];
 
   static const List<String> onBoardingDescriptions = [
-    'Here you’ll see rich varieties of goods, carefully classified for seamless browsing experience.',
-    'Add any item you want to your cart, or save it on your wishlist, so you don’t miss it in your future purchases.',
-    'There are many payment options available for your ease.',
-    'In particular, Shoplon can pack your orders, and help you seamlessly manage your shipments.',
-    'Easily track nearby shops, browse through their items and get information about their prodcuts.',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
+    'ِأضف الوصف الذي تريده',
   ];
 
   static const String welcom = 'Welcome back!';
@@ -44,13 +44,16 @@ class AppStrings {
       'Enter Your E-mail Address To Reset Your Password';
 
   static const String getStarted = 'Let’s get started!';
-  static const String getStartedDescriptions = 'Please enter your valid data in order to create an account.';
+  static const String getStartedDescriptions =
+      'Please enter your valid data in order to create an account.';
 
   static const String agreement = 'I agree with the';
   static const String terms = ' Terms of service ';
   static const String privacy = '& privacy policy.';
-  
+
+  static const String empty = 'Empty';
   static const String categories = 'Categories';
+  static const String relatedProducts = 'Related Products';
   static const String popularCategories = 'Popular products';
   static const String flashSale = 'Flash Sale';
   static const String newArrival = 'New \narrival';
@@ -60,5 +63,27 @@ class AppStrings {
   static const String off = '% OFF';
 
   static const String saleQuote = 'Super Flash Sale \n50% Off';
-
+  static const String cart = 'Cart';
+  static const String orders = 'My Orders';
+  static const String addToCart = 'Add To Cart';
+  static const String findSomeThing = 'Find something...';
+  static const String shopNow = 'SHOP NOW';
+  static const String reviewOrder = 'Review your order';
+  static const String couponCode = 'Type coupon code';
+  static const String producrDescripation =
+      'عصير برتقال طبيعي 100%، مستخلص مباشرة من أفضل أنواع البرتقال الطازج. يتميز بمذاقه المنعش والطبيعي، دون أي إضافات صناعية أو سكر مضاف. مثالي لبدء يومك بنشاط أو كوجبة خفيفة صحية. كل كوب يحتوي على 250 مل من الفيتامينات والطاقة الطبيعية.';
+  static const String orderSummary = 'Order Summary';
+  static const String subTotal = 'Subtotal';
+  static const String shippingFee = 'Shipping Fee';
+  static const String totalPrice = 'Total (Include of VAT)';
+  static const String estimatedVAT = 'Estimated VAT';
+  static const String checkout = 'Checkout';
+  static const String editProfile = 'Edit Profile';
+  static const String aboutUs = 'About Us';
+  static const String faq = 'FAQ';
+  static const String contactUs = 'Contact Us';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String rateUs = 'Rate Us';
+  static const String shareApp = 'Share App';
+  static const String logout = 'Logout';
 }

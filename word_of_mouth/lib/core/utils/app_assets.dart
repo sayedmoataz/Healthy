@@ -10,11 +10,11 @@ class AppAssets {
   static const String login = '$loginImagesPath/login_dark.png';
 
   static const List<String> onboarding = [
-    '$onboardingImagesPath/Illustration-0.png',
-    '$onboardingImagesPath/Illustration-1.png',
-    '$onboardingImagesPath/Illustration-2.png',
-    '$onboardingImagesPath/Illustration-3.png',
-    '$onboardingImagesPath/Illustration-4.png',
+    '$onboardingImagesPath/Illustration-0.jpg',
+    '$onboardingImagesPath/Illustration-1.jpg',
+    '$onboardingImagesPath/Illustration-2.jpg',
+    '$onboardingImagesPath/Illustration-3.jpg',
+    '$onboardingImagesPath/Illustration-4.jpg',
   ];
 
   static const String arrowLeft = '$iconsPath/Arrow - Left.svg';

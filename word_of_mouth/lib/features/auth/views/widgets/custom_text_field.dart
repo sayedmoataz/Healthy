@@ -8,26 +8,40 @@ class CustomTextField extends StatelessWidget {
   void Function(String?)? onSaved;
   String? Function(String?)? validator;
   TextInputType? keyboardType;
+  TextEditingController controller;
   String? hintText;
   String assetName;
+  int? maxLine;
   CustomTextField({
     this.onSaved,
     this.validator,
     this.keyboardType,
+    required this.controller,
     this.hintText,
     required this.assetName,
+    this.maxLine,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       onSaved: onSaved,
       validator: validator,
       textInputAction: TextInputAction.next,
       keyboardType: keyboardType,
       obscureText: keyboardType == TextInputType.visiblePassword,
+      maxLines: keyboardType != TextInputType.visiblePassword ? maxLine : 1,
       decoration: InputDecoration(
+        disabledBorder: OutlineInputBorder(
+          borderRadius:
+              BorderRadius.circular(AppConstants.defaultBorderRadious),
+        ),
+        border: OutlineInputBorder(
+          borderRadius:
+              BorderRadius.circular(AppConstants.defaultBorderRadious),
+        ),
         hintText: hintText,
         prefixIcon: Padding(
           padding: const EdgeInsets.symmetric(
