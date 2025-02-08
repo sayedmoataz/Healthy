@@ -7,7 +7,7 @@ import '../../../features/onboarding/view/pages/on_boaerding.dart';
 class AppRoutes {
   //? Routes as a widget
   static Widget get onBoardingScreen => OnBoarding();
-  static Widget get LoginScreen => const LoginPage();
+  static Widget get LoginScreen => LoginPage();
   static Widget get LandingWidget => const LandingScreen();
 
   //? Routes as a string
@@ -19,6 +19,7 @@ class AppRoutes {
   static const String forgetPassword = '/forgetPassword';
   static const String productScreen = '/productScreen';
   static const String categoriesScreen = '/categoriesScreen';
+  static const String categoryDetails = '/categoryDetails';
   static const String cartScreen = '/cartScreen';
   static const String infoScreen = '/infoScreen';
   static const String editProfileScreen = '/editProfileScreen';

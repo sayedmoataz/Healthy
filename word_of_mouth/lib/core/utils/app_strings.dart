@@ -35,7 +35,10 @@ class AppStrings {
   static const String haveAccount = 'Don\'t have an account? ';
   static const String signUp = 'Sign up';
 
+  static const String firstName = 'First Name';
+  static const String lastName = 'Last Name';
   static const String email = 'Email address';
+  static const String mobile = 'Mobile';
   static const String password = 'Password';
   static const String confirmPassword = 'Confirm Password';
 

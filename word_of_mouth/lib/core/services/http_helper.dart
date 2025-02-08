@@ -1,15 +1,16 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../api/end_point.dart';
+
 class HttpHelper {
-  static const String baseUrl = 'https://yourapi.com/';
 
   static Future<http.Response> getData({
     required String endpoint,
     Map<String, String>? headers,
     Map<String, String>? queryParams,
   }) async {
-    Uri uri = Uri.parse(baseUrl + endpoint).replace(queryParameters: queryParams);
+    Uri uri = Uri.parse(EndPoints.baseUrl + endpoint).replace(queryParameters: queryParams);
     return await http.get(uri, headers: headers);
   }
 
@@ -18,7 +19,7 @@ class HttpHelper {
     required Map<String, dynamic> data,
     Map<String, String>? headers,
   }) async {
-    Uri uri = Uri.parse(baseUrl + endpoint);
+    Uri uri = Uri.parse(EndPoints.baseUrl + endpoint);
     return await http.post(
       uri,
       headers: headers ?? {'Content-Type': 'application/json'},
@@ -31,7 +32,7 @@ class HttpHelper {
     required Map<String, dynamic> data,
     Map<String, String>? headers,
   }) async {
-    Uri uri = Uri.parse(baseUrl + endpoint);
+    Uri uri = Uri.parse(EndPoints.baseUrl + endpoint);
     return await http.put(
       uri,
       headers: headers ?? {'Content-Type': 'application/json'},
@@ -43,7 +44,7 @@ class HttpHelper {
     required String endpoint,
     Map<String, String>? headers,
   }) async {
-    Uri uri = Uri.parse(baseUrl + endpoint);
+    Uri uri = Uri.parse(EndPoints.baseUrl + endpoint);
     return await http.delete(uri, headers: headers);
   }
 }

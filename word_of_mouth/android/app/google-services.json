@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "519677569720",
+    "project_id": "healthy-app-eae47",
+    "storage_bucket": "healthy-app-eae47.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:519677569720:android:5508d810ddf22bfab2a24d",
+        "android_client_info": {
+          "package_name": "com.wordofmouth.word_of_mouth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwlht3MHoaDEY4TPjNoOcBp_X4Dbvyn5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

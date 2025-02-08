@@ -8,24 +8,25 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/routing/app_routes.dart';
+import '../../controller/auth_controller.dart';
+import '../widgets/auth_button.dart';
 import '../widgets/login_form.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final AuthController authController = Get.put(AuthController());
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset(
-                AppAssets.logo,
-                fit: BoxFit.cover,
-              ),
+              Image.asset(AppAssets.logo, fit: BoxFit.cover),
               Padding(
                 padding: const EdgeInsets.all(AppConstants.defaultPadding),
                 child: Column(
@@ -38,22 +39,30 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(height: AppConstants.defaultPadding / 2),
                     const Text(AppStrings.makeLogin),
                     const SizedBox(height: AppConstants.defaultPadding),
-                    const LogInForm(),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        child: const Text(AppStrings.forgetPassword),
-                        onPressed: () => Get.toNamed(AppRoutes.forgetPassword),
-                      ),
+                    LogInForm(
+                      formKey: _loginFormKey,
+                      emailController: emailController,
+                      passwordController: passwordController,
                     ),
-                    SizedBox(
-                      height: size.height > 700
-                          ? size.height * 0.1
-                          : AppConstants.defaultPadding,
-                    ),
-                    ElevatedButton(
-                      onPressed: () => Get.toNamed(AppRoutes.landingScreen),
-                      child: const Text(AppStrings.login),
+                    // Align(
+                    //   alignment: Alignment.centerRight,
+                    //   child: TextButton(
+                    //     child: const Text(AppStrings.forgetPassword),
+                    //     onPressed: () => Get.toNamed(AppRoutes.forgetPassword),
+                    //   ),
+                    // ),
+                    const SizedBox(height: AppConstants.defaultPadding),
+                    LoadingButton(
+                      label: AppStrings.login,
+                      isLoading: authController.isLoading,
+                      onPressed: () {
+                        if (_loginFormKey.currentState!.validate()) {
+                          authController.login(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                          );
+                        }
+                      },
                     ),
                     SizedBox(height: 5.h),
                     Center(

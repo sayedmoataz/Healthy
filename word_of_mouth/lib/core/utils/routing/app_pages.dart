@@ -5,8 +5,9 @@ import '../../../features/AllOrdersScreen/views/pages/AllOrdersScreen_page.dart'
 import '../../../features/CartScreen/controllers/CartScreen_bindings.dart';
 import '../../../features/CartScreen/view/pages/CartScreen_page.dart';
 import '../../../features/CategoriesScreen/controllers/CategoriesScreen_bindings.dart';
+import '../../../features/CategoriesScreen/controllers/category_details_controller.dart';
 import '../../../features/CategoriesScreen/view/pages/CategoriesScreen_page.dart';
-import '../../../features/HomeScreen/view/pages/HomeScreen_page.dart';
+import '../../../features/CategoriesScreen/view/pages/category_details.dart';
 import '../../../features/InfoScreen/controllers/InfoScreen_bindings.dart';
 import '../../../features/InfoScreen/views/pages/InfoScreen_page.dart';
 import '../../../features/InfoScreen/views/pages/menu_screen/about_us.dart';
@@ -29,7 +30,7 @@ class AppPages {
   static final routes = [
     GetPage(
       name: AppRoutes.loginScreen,
-      page: () => const LoginPage(),
+      page: () => LoginPage(),
       binding: AuthBinding(),
     ),
     GetPage(
@@ -43,13 +44,19 @@ class AppPages {
       binding: AuthBinding(),
     ),
     GetPage(
-      name: AppRoutes.homeScreen,
-      page: () => const HomeScreen(),
-      binding: AuthBinding(),
-    ),
-    GetPage(
       name: AppRoutes.productScreen,
-      page: () => const ProductScreenPage(),
+      page: () {
+        final args = Get.arguments as Map<String, dynamic>?;
+        if (args == null ||
+            args['productId'] == null ||
+            args['collectionName'] == null) {
+          throw ArgumentError('productId and collectionName must be provided');
+        }
+        return ProductScreenPage(
+          productId: args['productId'] as String,
+          collectionName: args['collectionName'] as String,
+        );
+      },
       binding: ProductScreenBindings(),
     ),
     GetPage(
@@ -61,6 +68,24 @@ class AppPages {
       name: AppRoutes.categoriesScreen,
       page: () => CategoriesScreenPage(),
       binding: CategoriesScreenBindings(),
+    ),
+    GetPage(
+      name: AppRoutes.categoryDetails,
+      page: () {
+        final args = Get.arguments as Map<String, dynamic>?;
+        if (args == null || args['categoryId'] == null) {
+          throw ArgumentError('categoryId must be provided');
+        }
+        return CategoryDetails(categoryId: args['categoryId'] as String);
+      },
+      binding: BindingsBuilder(() {
+        final args = Get.arguments as Map<String, dynamic>?;
+        if (args == null || args['categoryId'] == null) {
+          throw ArgumentError('categoryId must be provided');
+        }
+        Get.put(CategoryDetailsController(
+            categoryId: args['categoryId'] as String));
+      }),
     ),
     GetPage(
       name: AppRoutes.cartScreen,

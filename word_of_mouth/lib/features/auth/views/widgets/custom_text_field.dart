@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -31,7 +32,8 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       textInputAction: TextInputAction.next,
       keyboardType: keyboardType,
-      obscureText: keyboardType == TextInputType.visiblePassword,
+      // obscureText: keyboardType == TextInputType.visiblePassword,
+      obscureText: hintText == AppStrings.password,
       maxLines: keyboardType != TextInputType.visiblePassword ? maxLine : 1,
       decoration: InputDecoration(
         disabledBorder: OutlineInputBorder(

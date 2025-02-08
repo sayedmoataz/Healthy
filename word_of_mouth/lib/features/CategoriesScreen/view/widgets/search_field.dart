@@ -20,16 +20,16 @@ class CustomSearchField extends StatelessWidget {
           borderRadius:
               BorderRadius.circular(AppConstants.defaultBorderRadious),
         ),
-        child: Row(
+        child: const Row(
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(AppConstants.defaultPadding),
               child: Icon(Icons.search, color: AppColors.greyColor),
             ),
             Expanded(
               child: TextField(
-                onChanged: controller.updateSearch,
-                decoration: const InputDecoration(
+                // onChanged: controller.updateSearch,
+                decoration: InputDecoration(
                   border: InputBorder.none,
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
