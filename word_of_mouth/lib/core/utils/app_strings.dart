@@ -84,6 +84,8 @@ class AppStrings {
   static const String editProfile = 'Edit Profile';
   static const String aboutUs = 'About Us';
   static const String faq = 'FAQ';
+  static const String question = 'Question';
+  static const String answer = 'Answer';
   static const String contactUs = 'Contact Us';
   static const String privacyPolicy = 'Privacy Policy';
   static const String rateUs = 'Rate Us';
