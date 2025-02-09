@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/utils/app_assets.dart';
+import '../../../../core/components/custom_app_bar.dart';
 import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/routing/app_routes.dart';
 import '../../controllers/CategoriesScreen_controller.dart';
 import '../widgets/category_item.dart';
-import '../../../../core/components/custom_app_bar.dart';
 import '../widgets/search_field.dart';
 
 class CategoriesScreenPage extends StatelessWidget {
@@ -19,30 +19,38 @@ class CategoriesScreenPage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            // App Bar
-            const CustomAppBar(title: AppStrings.categories, icon: Icons.shopping_bag_outlined, backable: false),
-            // Search Bar
+            const CustomAppBar(
+              title: AppStrings.categories,
+              icon: Icons.shopping_bag_outlined,
+              backable: false,
+            ),
             CustomSearchField(controller: controller),
-
-            // Sales Banner List
             Expanded(
-              child: ListView(
-                padding: const EdgeInsets.all(16),
-                children: const [
-                  CategoryItem(
-                    imagePath: AppAssets.networkImage,
-                    categoryName: AppStrings.appName,
-                  ),
-                  CategoryItem(
-                    imagePath: AppAssets.networkImage,
-                    categoryName: AppStrings.appName,
-                  ),
-                  CategoryItem(
-                    imagePath: AppAssets.networkImage,
-                    categoryName: AppStrings.appName,
-                  ),
-                ],
-              ),
+              child: Obx(() {
+                if (controller.categories.isEmpty) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                return ListView.builder(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: controller.categories.length,
+                  itemBuilder: (context, index) {
+                    var category = controller.categories[index];
+                    return CategoryItem(
+                      imagePath: category['image'],
+                      categoryName: category['name'],
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoutes.categoryDetails,
+                          arguments: {
+                            'categoryId': category['id'],
+                          },
+                        );
+                      },
+                    );
+                  },
+                );
+              }),
             ),
           ],
         ),

@@ -24,7 +24,7 @@ class SpalshScreen extends StatelessWidget {
 
   Widget _navigatorScreen() {
     final bool? skipOnBoarding = CacheHelper.getData(key: AppConstants.skipOnBoarding) as bool?;
-    final String? token = CacheHelper.getData(key: 'token') as String?;
+    final String? token = CacheHelper.getData(key: AppConstants.userToken) as String?;
 
     return (skipOnBoarding == null || skipOnBoarding == false)
         ? AppRoutes.onBoardingScreen

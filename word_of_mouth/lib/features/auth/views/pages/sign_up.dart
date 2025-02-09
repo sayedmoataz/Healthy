@@ -16,6 +16,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -40,39 +41,6 @@ class SignUp extends StatelessWidget {
                   ),
                   const SizedBox(height: AppConstants.defaultPadding),
                   const SignUpForm(),
-                  const SizedBox(height: AppConstants.defaultPadding),
-                  Row(
-                    children: [
-                      Checkbox(
-                        onChanged: (value) {},
-                        value: false,
-                      ),
-                      Expanded(
-                        child: Text.rich(
-                          TextSpan(
-                            text: AppStrings.agreement,
-                            children: [
-                              TextSpan(
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {},
-                                text: AppStrings.terms,
-                                style: const TextStyle(
-                                  color: AppColors.primaryColor,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              const TextSpan(text: AppStrings.privacy),
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: AppConstants.defaultPadding * 2),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text(AppStrings.signUp),
-                  ),
                   SizedBox(height: 5.h),
                   Center(
                     child: RichText(

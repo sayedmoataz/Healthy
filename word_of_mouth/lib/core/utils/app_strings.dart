@@ -35,7 +35,10 @@ class AppStrings {
   static const String haveAccount = 'Don\'t have an account? ';
   static const String signUp = 'Sign up';
 
+  static const String firstName = 'First Name';
+  static const String lastName = 'Last Name';
   static const String email = 'Email address';
+  static const String mobile = 'Mobile';
   static const String password = 'Password';
   static const String confirmPassword = 'Confirm Password';
 
@@ -81,6 +84,8 @@ class AppStrings {
   static const String editProfile = 'Edit Profile';
   static const String aboutUs = 'About Us';
   static const String faq = 'FAQ';
+  static const String question = 'Question';
+  static const String answer = 'Answer';
   static const String contactUs = 'Contact Us';
   static const String privacyPolicy = 'Privacy Policy';
   static const String rateUs = 'Rate Us';

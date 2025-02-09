@@ -7,6 +7,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/routing/app_routes.dart';
+import '../../../auth/controller/auth_controller.dart';
 import '../../controllers/InfoScreen_controller.dart';
 
 class InfoScreenPage extends GetView<InfoScreenController> {
@@ -66,7 +67,10 @@ class InfoScreenPage extends GetView<InfoScreenController> {
                 const Divider(),
                 ListTile(
                   title: const Text(AppStrings.logout),
-                  onTap: () {},
+                  onTap: () {
+                    AuthController authController = Get.find();
+                    authController.logout();
+                  },
                 ),
               ],
             ),

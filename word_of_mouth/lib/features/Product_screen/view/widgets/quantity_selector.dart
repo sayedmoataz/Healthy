@@ -6,12 +6,12 @@ import '../../../../core/utils/constants.dart';
 import '../../controllers/Product_screen_controller.dart';
 
 class QuantitySelector extends StatelessWidget {
-  final ProductScreenController controller = Get.put(ProductScreenController());
-
-  QuantitySelector({super.key});
+  const QuantitySelector({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ProductScreenController>();
+
     return Obx(() => Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

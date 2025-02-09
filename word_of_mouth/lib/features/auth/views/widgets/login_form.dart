@@ -7,20 +7,25 @@ import '../../../../core/utils/constants.dart';
 import 'custom_text_field.dart';
 
 class LogInForm extends StatelessWidget {
-  const LogInForm({super.key});
+  final GlobalKey<FormState> formKey;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
+
+  const LogInForm({
+    super.key,
+    required this.formKey,
+    required this.emailController,
+    required this.passwordController,
+  });
 
   @override
-  Widget build(BuildContext context) {    
-    final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+  Widget build(BuildContext context) {
     return Form(
-      key: _loginFormKey,
+      key: formKey,
       child: Column(
         children: [
           CustomTextField(
             controller: emailController,
-            onSaved: (emal) {},
             validator: Validators.emaildValidator.call,
             keyboardType: TextInputType.emailAddress,
             hintText: AppStrings.email,
@@ -29,7 +34,6 @@ class LogInForm extends StatelessWidget {
           const SizedBox(height: AppConstants.defaultPadding),
           CustomTextField(
             controller: passwordController,
-            onSaved: (pass) {},
             validator: Validators.passwordValidator.call,
             hintText: AppStrings.password,
             assetName: AppAssets.passwordIcon,
@@ -40,3 +44,4 @@ class LogInForm extends StatelessWidget {
     );
   }
 }
+

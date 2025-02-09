@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
+
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/constants.dart';
-import '../../../Product_screen/view/pages/Product_screen_page.dart';
 
 class CategoryDetailsItem extends StatelessWidget {
   final String imagePath;
   final String categoryName;
   final String categoryDesc;
+  final void Function()? onTap;
   const CategoryDetailsItem(
       {required this.imagePath,
       required this.categoryName,
       required this.categoryDesc,
+      required this.onTap,
       super.key});
 
   @override
@@ -23,9 +24,7 @@ class CategoryDetailsItem extends StatelessWidget {
       padding: const EdgeInsets.all(AppConstants.defaultPadding / 2),
       child: InkWell(
         splashColor: AppColors.transparentColor,
-        onTap: () {
-          Get.to(() => const ProductScreenPage());
-        },
+        onTap: onTap,
         child: Container(
           height: 80.h,
           decoration: BoxDecoration(

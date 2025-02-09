@@ -4,15 +4,15 @@ import 'package:get/get.dart';
 class Validators {
   static validationMobile(String data) {
     if (data.isEmpty || data == '') {
-      return 'The field is required'.tr;
+      return 'The phone number is required'.tr;
     } else if (data.length < 8) {
       return 'The phone number must be greater than 8 digits';
     }
   }
 
-  static validationNull(String data) {
+  static validationNull(String data, String name) {
     if (data.isEmpty || data == '') {
-      return 'The field is required'.tr;
+      return '$name is required'.tr;
     }
   }
 
@@ -36,9 +36,8 @@ class Validators {
 
   static final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'Password is required'),
-    MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
-    PatternValidator(r'(?=.*?[#?!@$%^&*-])',
-        errorText: 'passwords must have at least one special character')
+    MinLengthValidator(8, errorText: 'password must be at least 8 Characters long'),
+    // PatternValidator(r'(?=.*?[#?!@$%^&*-])',errorText: 'passwords must have at least one special character')
   ]);
 
   static final emaildValidator = MultiValidator([
