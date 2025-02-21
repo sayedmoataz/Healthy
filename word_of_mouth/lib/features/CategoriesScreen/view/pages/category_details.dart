@@ -1,9 +1,11 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/components/custom_app_bar.dart';
 import '../../../../core/utils/routing/app_routes.dart';
-import '../../controllers/category_details_controller.dart';
+import '../../controllers/CategoriesScreen_controller.dart';
 import '../widgets/category_details_item.dart';
 
 class CategoryDetails extends StatelessWidget {
@@ -13,8 +15,11 @@ class CategoryDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =
-        Get.put(CategoryDetailsController(categoryId: categoryId));
+    final controller = Get.put(CategoriesController());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.fetchProducts(categoryId);
+    });
 
     return Scaffold(
       body: SafeArea(
@@ -44,13 +49,14 @@ class CategoryDetails extends StatelessWidget {
                           return CategoryDetailsItem(
                             imagePath: product['images'][0],
                             categoryName: product['name'],
-                            categoryDesc: product['description'],
                             onTap: () {
+                              var productRef = product['productRef'] as DocumentReference;
+                              var productId = productRef.id;
                               Get.toNamed(
                                 AppRoutes.productScreen,
                                 arguments: {
-                                  'productId': product['id'],
-                                  'collectionName': 'categories',
+                                  'productId': productId,
+                                  'collectionName': 'allProducts',
                                 },
                               );
                             },

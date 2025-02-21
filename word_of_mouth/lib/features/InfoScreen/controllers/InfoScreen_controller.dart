@@ -1,8 +1,13 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../core/components/custom_snack_bar.dart';
+import '../../../core/services/cache_helper.dart';
+import '../../../core/utils/constants.dart';
 
 class InfoScreenController extends GetxController {
   TextEditingController nameController = TextEditingController();
@@ -12,11 +17,28 @@ class InfoScreenController extends GetxController {
   var isLoading = true.obs;
   var isFaqLoading = true.obs;
 
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  
+  var isEditLoading = false.obs;
+  var profileImage = ''.obs;
+
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController streetController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
+  TextEditingController zipCodeController = TextEditingController();
+  TextEditingController countryController = TextEditingController();
+
   @override
   void onInit() {
     super.onInit();
     fetchStaticContent();
     fetchFAQs();
+    loadUserData();
   }
 
   Future<void> fetchStaticContent() async {
@@ -57,6 +79,68 @@ class InfoScreenController extends GetxController {
       log('Error fetching FAQs: $e');
     } finally {
       isFaqLoading.value = false;
+    }
+  }
+
+  Future<void> loadUserData() async {
+    isEditLoading.value = true;
+    try {
+      String userId = CacheHelper.getData(key: AppConstants.userId);
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+
+      if (userDoc.exists) {
+        Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
+
+        firstNameController.text = data['firstName'] ?? '';
+        lastNameController.text = data['lastName'] ?? '';
+        emailController.text = data['email'] ?? '';
+        phoneController.text = data['phone'] ?? '';
+        
+        Map<String, dynamic> address = data['address'] ?? {};
+        streetController.text = address['street'] ?? '';
+        cityController.text = address['city'] ?? '';
+        stateController.text = address['state'] ?? '';
+        zipCodeController.text = address['zipCode'] ?? '';
+        countryController.text = address['country'] ?? '';
+
+        if (data.containsKey('profileImage')) {
+          profileImage.value = data['profileImage'];
+        }
+      }
+    } catch (e) {
+      log('❌ Error loading user data: $e');
+      CommonUI.showSnackBar('Failed to load user data.');
+    } finally {
+      isEditLoading.value = false;
+    }
+  }
+
+  Future<void> editProfile() async {
+    isEditLoading.value = true;
+    try {
+      String userId = CacheHelper.getData(key: AppConstants.userId);
+      Map<String, dynamic> updatedData = {
+        'firstName': firstNameController.text.trim(),
+        'lastName': lastNameController.text.trim(),
+        'phone': phoneController.text.trim(),
+        'email': emailController.text.trim(),
+        'address': {
+          'street': streetController.text.trim(),
+          'city': cityController.text.trim(),
+          'state': stateController.text.trim(),
+          'zipCode': zipCodeController.text.trim(),
+          'country': countryController.text.trim(),
+        },
+        'updatedAt': DateTime.now().toIso8601String(),
+      };
+
+      await _firestore.collection('users').doc(userId).update(updatedData);
+      CommonUI.showSnackBar('Profile updated successfully!');
+    } catch (e) {
+      log('❌ Error updating profile: $e');
+      CommonUI.showSnackBar('Failed to update profile.');
+    } finally {
+      isEditLoading.value = false;
     }
   }
 }

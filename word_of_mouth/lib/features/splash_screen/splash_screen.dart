@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:tbib_splash_screen/splash_screen_view.dart';
 
@@ -25,6 +27,7 @@ class SpalshScreen extends StatelessWidget {
   Widget _navigatorScreen() {
     final bool? skipOnBoarding = CacheHelper.getData(key: AppConstants.skipOnBoarding) as bool?;
     final String? token = CacheHelper.getData(key: AppConstants.userToken) as String?;
+    log('token is: $token');
 
     return (skipOnBoarding == null || skipOnBoarding == false)
         ? AppRoutes.onBoardingScreen

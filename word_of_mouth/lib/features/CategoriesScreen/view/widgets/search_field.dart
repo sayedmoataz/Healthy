@@ -6,7 +6,7 @@ import '../../../../core/utils/constants.dart';
 import '../../controllers/CategoriesScreen_controller.dart';
 
 class CustomSearchField extends StatelessWidget {
-  final CategoriesScreenController controller;
+  final CategoriesController controller;
   const CustomSearchField({required this.controller, super.key});
 
   @override

@@ -78,7 +78,7 @@ class CartItem extends StatelessWidget {
                 ],
               ),
             ),
-            QuantitySelector(),
+            QuantitySelector(item: item),
           ],
         ),
       ),

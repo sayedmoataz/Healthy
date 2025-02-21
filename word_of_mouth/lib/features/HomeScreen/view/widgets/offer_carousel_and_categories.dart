@@ -13,14 +13,6 @@ class OffersCarouselAndCategories extends StatelessWidget {
       children: [
         OffersCarousel(),
         SizedBox(height: AppConstants.defaultPadding / 2),
-        // Padding(
-        //   padding: const EdgeInsets.all(AppConstants.defaultPadding),
-        //   child: Text(
-        //     AppStrings.categories,
-        //     style: Theme.of(context).textTheme.titleSmall,
-        //   ),
-        // ),
-        // const Categories(),
       ],
     );
   }

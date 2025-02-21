@@ -1,18 +1,45 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/components/custom_snack_bar.dart';
+import '../../../core/services/cache_helper.dart';
 import '../../../core/utils/app_colors.dart';
+import '../../../core/utils/constants.dart';
+import '../models/order_model.dart';
 
 class AllOrdersScreenController extends GetxController {
-  List<String> statuses = ['Pending', 'Accepted', 'Preparing', 'Out for Delivery', 'Delivered', 'Cancelled'];
-List<String> dates = ['01/01/2023', '02/01/2023', '03/01/2023', '04/01/2023', '05/01/2023', '06/01/2023'];
-List<int> orderIds = [123456, 123457, 123458, 123459, 123460, 123461];
-List<Color> colors = [
-  AppColors.purpleColor,
-  AppColors.successColor,
-  AppColors.warningColor,
-  AppColors.warningColor,
-  AppColors.successColor,
-  AppColors.errorColor
-];
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  RxList<OrderModel> orders = <OrderModel>[].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchOrders();
+  }
+
+  Future<void> fetchOrders() async {
+  try {
+    String userId = CacheHelper.getData(key: AppConstants.userId);
+
+    QuerySnapshot orderSnapshot = await _firestore
+        .collection('users')
+        .doc(userId)
+        .collection('orders')
+        .orderBy('orderDate', descending: true)
+        .get();
+
+    List<OrderModel> fetchedOrders = orderSnapshot.docs
+        .map((doc) => OrderModel.fromMap(doc.data() as Map<String, dynamic>))
+        .toList();
+
+    orders.assignAll(fetchedOrders);
+  } catch (e) {
+    log('❌ Error fetching orders: ${e.toString()}');
+    CommonUI.showSnackBar('Failed to fetch orders.');
+  }
+}
+
 }

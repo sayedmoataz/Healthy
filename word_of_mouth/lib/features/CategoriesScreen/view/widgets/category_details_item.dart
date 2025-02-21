@@ -9,12 +9,10 @@ import '../../../../core/utils/constants.dart';
 class CategoryDetailsItem extends StatelessWidget {
   final String imagePath;
   final String categoryName;
-  final String categoryDesc;
   final void Function()? onTap;
   const CategoryDetailsItem(
       {required this.imagePath,
       required this.categoryName,
-      required this.categoryDesc,
       required this.onTap,
       super.key});
 
@@ -49,10 +47,7 @@ class CategoryDetailsItem extends StatelessWidget {
                 ),
               ),
               child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
+                child: Text(
                       categoryName,
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -62,17 +57,6 @@ class CategoryDetailsItem extends StatelessWidget {
                         fontSize: 16.sp,
                       ),
                     ),
-                    Text(
-                      categoryDesc,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: AppColors.whiteColor,
-                        fontFamily: AppStrings.grandisExtendedFont,
-                        fontSize: 14.sp,
-                      ),
-                    ),
-                  ],
-                ),
               )),
         ),
       ),

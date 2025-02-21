@@ -1,6 +1,7 @@
 analyzer:
   errors:
     avoid_function_literals_in_foreach_calls: ignore
+    invalid_use_of_protected_member: ignore
     library_prefixes: ignore
     library_private_types_in_public_api: ignore
     must_be_immutable: ignore

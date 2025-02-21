@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
   String? hintText;
   String assetName;
   int? maxLine;
+  bool? enabled;
   CustomTextField({
     this.onSaved,
     this.validator,
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.hintText,
     required this.assetName,
     this.maxLine,
+    this.enabled,
     super.key,
   });
 
@@ -36,6 +38,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: hintText == AppStrings.password,
       maxLines: keyboardType != TextInputType.visiblePassword ? maxLine : 1,
       decoration: InputDecoration(
+        enabled: enabled ?? true,
         disabledBorder: OutlineInputBorder(
           borderRadius:
               BorderRadius.circular(AppConstants.defaultBorderRadious),
