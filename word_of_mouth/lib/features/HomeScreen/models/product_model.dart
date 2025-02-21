@@ -3,8 +3,8 @@ import '../../../core/utils/app_strings.dart';
 
 class ProductModel {
   final String image, title;
-  final double price;
-  final double? priceAfetDiscount;
+  final int? price;
+  final int? priceAfetDiscount;
   final int? dicountpercent;
 
   ProductModel({

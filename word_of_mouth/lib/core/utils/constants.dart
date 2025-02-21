@@ -7,4 +7,5 @@ class AppConstants {
 
   static const String skipOnBoarding = 'SkipOnBoarding';
   static const String userToken = 'UserToken';
+  static const String userId = 'userId';
 }

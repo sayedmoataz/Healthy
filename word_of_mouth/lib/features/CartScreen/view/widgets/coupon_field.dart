@@ -24,6 +24,7 @@ class CouponField extends StatelessWidget {
             child: TextField(
               controller: couponController,
               decoration: const InputDecoration(
+                enabled: false,
                 border: InputBorder.none,
                 hintText: AppStrings.couponCode,
                 hintStyle: TextStyle(color: Colors.grey),

@@ -44,21 +44,21 @@ class AppPages {
       binding: AuthBinding(),
     ),
     GetPage(
-      name: AppRoutes.productScreen,
-      page: () {
-        final args = Get.arguments as Map<String, dynamic>?;
-        if (args == null ||
-            args['productId'] == null ||
-            args['collectionName'] == null) {
-          throw ArgumentError('productId and collectionName must be provided');
-        }
-        return ProductScreenPage(
-          productId: args['productId'] as String,
-          collectionName: args['collectionName'] as String,
-        );
-      },
-      binding: ProductScreenBindings(),
-    ),
+  name: AppRoutes.productScreen,
+  page: () {
+    final args = Get.arguments as Map<String, dynamic>?;
+    if (args == null ||
+        args['productId'] == null ||
+        args['collectionName'] == null) {
+      throw ArgumentError('productId and collectionName must be provided');
+    }
+    return ProductScreenPage(
+      productId: args['productId'] as String,
+      collectionName: args['collectionName'] as String,
+    );
+  },
+  binding: ProductScreenBindings(),
+),
     GetPage(
       name: AppRoutes.landingScreen,
       page: () => const LandingScreen(),

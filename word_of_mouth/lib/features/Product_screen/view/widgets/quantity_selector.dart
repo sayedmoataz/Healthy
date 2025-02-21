@@ -3,21 +3,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/utils/constants.dart';
-import '../../controllers/Product_screen_controller.dart';
+import '../../../CartScreen/controllers/CartScreen_controller.dart';
+import '../../../CartScreen/models/cart_model.dart';
 
 class QuantitySelector extends StatelessWidget {
-  const QuantitySelector({super.key});
+  final CartModel item;
+
+  const QuantitySelector({required this.item, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ProductScreenController>();
-
+    final CartScreenController controller = Get.put(CartScreenController());
     return Obx(() => Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
               icon: const Icon(Icons.remove),
-              onPressed: controller.quantity > 1 ? controller.decrement : null,
+              onPressed: item.quantity.value > 1
+                  ? () => controller.updateQuantity(item, item.quantity.value - 1)
+                  : null,
             ),
             Container(
               padding: const EdgeInsets.symmetric(
@@ -29,15 +34,18 @@ class QuantitySelector extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Text(
-                '${controller.quantity}',
+                '${item.quantity.value}',
                 style: TextStyle(fontSize: 14.sp),
               ),
             ),
             IconButton(
               icon: const Icon(Icons.add),
-              onPressed: controller.quantity < 10 ? controller.increment : null,
+              onPressed: item.quantity.value < 10
+                  ? () => controller.updateQuantity(item, item.quantity.value + 1)
+                  : null,
             ),
           ],
         ));
   }
 }
+

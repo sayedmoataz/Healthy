@@ -72,7 +72,7 @@ class AppStrings {
   static const String findSomeThing = 'Find something...';
   static const String shopNow = 'SHOP NOW';
   static const String reviewOrder = 'Review your order';
-  static const String couponCode = 'Type coupon code';
+  static const String couponCode = 'Type coupon code (Soon)';
   static const String producrDescripation =
       'عصير برتقال طبيعي 100%، مستخلص مباشرة من أفضل أنواع البرتقال الطازج. يتميز بمذاقه المنعش والطبيعي، دون أي إضافات صناعية أو سكر مضاف. مثالي لبدء يومك بنشاط أو كوجبة خفيفة صحية. كل كوب يحتوي على 250 مل من الفيتامينات والطاقة الطبيعية.';
   static const String orderSummary = 'Order Summary';

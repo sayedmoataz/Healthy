@@ -9,7 +9,7 @@ import '../widgets/category_item.dart';
 import '../widgets/search_field.dart';
 
 class CategoriesScreenPage extends StatelessWidget {
-  final controller = Get.put(CategoriesScreenController());
+  final controller = Get.put(CategoriesController());
 
   CategoriesScreenPage({super.key});
 
@@ -27,8 +27,12 @@ class CategoriesScreenPage extends StatelessWidget {
             CustomSearchField(controller: controller),
             Expanded(
               child: Obx(() {
-                if (controller.categories.isEmpty) {
+                if (controller.isLoading.value) {
                   return const Center(child: CircularProgressIndicator());
+                }
+
+                if (controller.categories.isEmpty) {
+                  return const Center(child: Text('No categories found'));
                 }
 
                 return ListView.builder(
@@ -40,6 +44,7 @@ class CategoriesScreenPage extends StatelessWidget {
                       imagePath: category['image'],
                       categoryName: category['name'],
                       onTap: () {
+                        // await controller.fetchProducts(category['id']);
                         Get.toNamed(
                           AppRoutes.categoryDetails,
                           arguments: {

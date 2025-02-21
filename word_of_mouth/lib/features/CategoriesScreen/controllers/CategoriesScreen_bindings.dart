@@ -4,6 +4,6 @@ import 'CategoriesScreen_controller.dart';
 class CategoriesScreenBindings implements Bindings {
     @override
     void dependencies() {
-        Get.put(CategoriesScreenController());
+        Get.put(CategoriesController());
     }
 }

@@ -68,7 +68,7 @@ class InfoScreenPage extends GetView<InfoScreenController> {
                 ListTile(
                   title: const Text(AppStrings.logout),
                   onTap: () {
-                    AuthController authController = Get.find();
+                    AuthController authController = Get.put(AuthController());
                     authController.logout();
                   },
                 ),
