@@ -66,13 +66,16 @@ class CartScreenController extends GetxController {
   Future<void> fetchCartData() async {
     try {
       String userId = CacheHelper.getData(key: AppConstants.userId);
+      log('userId is: $userId');
       DocumentSnapshot cartSnapshot = await _firestore
           .collection('users')
           .doc(userId)
           .collection('cart')
           .doc('info')
           .get();
+      log('cartSnapshot is: $cartSnapshot');
       if (!cartSnapshot.exists) {
+        log('cartSnapshot exists');
         cartItems.clear();
         subtotal.value = 0.0;
         tax.value = 0.0;
@@ -99,10 +102,15 @@ class CartScreenController extends GetxController {
           ),
         );
       });
+      log('product added to cart');
       cartItems.assignAll(tempCartItems);
+      log('cartItems.assignAll(tempCartItems);');
       subtotal.value = cartData['subtotal'];
+      log('subtotal');
       tax.value = cartData['tax'];
+      log('tax');
       total.value = cartData['total'];
+      log('total');
     } catch (e) {
       log('❌ Error fetching cart data: ${e.toString()}');
       CommonUI.showSnackBar('Failed to fetch cart data.');
@@ -131,8 +139,6 @@ class CartScreenController extends GetxController {
         int quantity = item['quantity'] as int;
         double price = item['price'] as double;
         double itemTotal = price * quantity;
-
-        // Make sure the itemTotal is updated in the products map
         products[key]['itemTotal'] = itemTotal;
 
         totalItems += quantity;
@@ -168,18 +174,21 @@ class CartScreenController extends GetxController {
   }
 
   Future<void> removeFromCart({
-    required String userId,
     required String productId,
   }) async {
     try {
+      var userId = CacheHelper.getData(key: AppConstants.userId);
       await _firestore
           .collection('users')
           .doc(userId)
           .collection('cart')
-          .doc(productId)
-          .delete();
+          .doc('info')
+          .update({
+        'products.$productId': FieldValue.delete(),
+      });
 
       await _updateCartTotals(userId);
+      await fetchCartData();
 
       log('✅ Item removed from cart successfully!');
     } catch (e) {

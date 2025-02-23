@@ -1,56 +1,21 @@
-import 'dart:async';
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/components/Banner/M/banner_m_style.dart';
-import '../../../../core/components/dot_indicators.dart';
-import '../../../../core/utils/constants.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/routing/app_routes.dart';
 import '../../controllers/HomeScreen_controller.dart';
 
 class OffersCarousel extends StatefulWidget {
-  const OffersCarousel({
-    super.key,
-  });
+  const OffersCarousel({super.key});
 
   @override
   State<OffersCarousel> createState() => _OffersCarouselState();
 }
 
 class _OffersCarouselState extends State<OffersCarousel> {
-  int _selectedIndex = 0;
-  late PageController _pageController;
-  late Timer _timer;
-
-  @override
-  void initState() {
-    _pageController = PageController(initialPage: 0);
-    _timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) {
-      final controller = Get.find<HomeScreenController>();
-      if (_selectedIndex < controller.featuredProducts.length - 1) {
-        _selectedIndex++;
-      } else {
-        _selectedIndex = 0;
-      }
-
-      _pageController.animateToPage(
-        _selectedIndex,
-        duration: const Duration(milliseconds: 350),
-        curve: Curves.easeOutCubic,
-      );
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    _timer.cancel();
-    super.dispose();
-  }
-
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeScreenController());
@@ -64,63 +29,73 @@ class _OffersCarouselState extends State<OffersCarousel> {
         return const Center(child: Text('No featured products found'));
       }
 
-      return AspectRatio(
-        aspectRatio: 1.87,
-        child: Stack(
-          alignment: Alignment.bottomRight,
-          children: [
-            PageView.builder(
-              controller: _pageController,
-              itemCount: controller.featuredProducts.length,
-              onPageChanged: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
-              itemBuilder: (context, index) {
-                var product = controller.featuredProducts[index];
-                return BannerMStyle4(
-                  image: product['images'][0],
-                  title: product['name'],
-                  subtitle: product['description'],
-                  discountParcent: product['discount'],
-                  press: () {
-                    Get.toNamed(
-                      AppRoutes.productScreen,
-                      arguments: {
-                        'productId': product['id'],
-                        'collectionName': 'featuredProducts',
-                      },
-                    );
+      return Padding(
+        padding: EdgeInsets.only(top: 8.0.h),
+        child: CarouselSlider.builder(
+          itemCount: controller.featuredProducts.length,
+          itemBuilder: (context, index, realIndex) {
+            var product = controller.featuredProducts[index];
+            return GestureDetector(
+              onTap: () {
+                Get.toNamed(
+                  AppRoutes.productScreen,
+                  arguments: {
+                    'productId': product['id'],
+                    'collectionName': 'featuredProducts',
                   },
                 );
               },
-            ),
-            FittedBox(
-              child: Padding(
-                padding: const EdgeInsets.all(AppConstants.defaultPadding),
-                child: SizedBox(
-                  height: 16.h,
-                  child: Row(
-                    children: List.generate(
-                      controller.featuredProducts.length,
-                      (index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              left: AppConstants.defaultPadding / 4),
-                          child: DotIndicator(
-                            isActive: index == _selectedIndex,
-                            activeColor: Colors.white70,
-                            inActiveColor: Colors.white54,
-                          ),
-                        );
-                      },
-                    ),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: AppColors.priceColors,
+                    width: 1.w,
                   ),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                child: Row(
+                  children: [
+                    Image.network(
+                      product['images'][0],
+                      fit: BoxFit.cover,
+                      width: 100.w,
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            product['name'],
+                            style: TextStyle(
+                              color: AppColors.blackColor,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            product['description'],
+                            style: TextStyle(
+                              color: AppColors.blackColor,
+                              fontSize: 14.sp,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+            );
+          },
+          options: CarouselOptions(
+            height: 125.h,
+            autoPlay: true,
+            enlargeCenterPage: true,
+            viewportFraction: 0.80,
+            onPageChanged: (index, reason) =>
+                setState(() => _currentIndex = index),
+          ),
         ),
       );
     });

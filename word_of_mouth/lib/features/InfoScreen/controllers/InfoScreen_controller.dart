@@ -17,9 +17,11 @@ class InfoScreenController extends GetxController {
   var isLoading = true.obs;
   var isFaqLoading = true.obs;
 
+  var isUserDataComplete = false.obs;
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  
+
   var isEditLoading = false.obs;
   var profileImage = ''.obs;
 
@@ -51,7 +53,8 @@ class InfoScreenController extends GetxController {
 
       if (docSnapshot.exists) {
         aboutUs.value = docSnapshot.data()?['aboutUs'] ?? 'No data available';
-        privacyPolicy.value = docSnapshot.data()?['privacyPolicy'] ?? 'No data available';
+        privacyPolicy.value =
+            docSnapshot.data()?['privacyPolicy'] ?? 'No data available';
       }
     } catch (e) {
       log('Error fetching static content: $e');
@@ -86,7 +89,8 @@ class InfoScreenController extends GetxController {
     isEditLoading.value = true;
     try {
       String userId = CacheHelper.getData(key: AppConstants.userId);
-      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+      DocumentSnapshot userDoc =
+          await _firestore.collection('users').doc(userId).get();
 
       if (userDoc.exists) {
         Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
@@ -95,7 +99,7 @@ class InfoScreenController extends GetxController {
         lastNameController.text = data['lastName'] ?? '';
         emailController.text = data['email'] ?? '';
         phoneController.text = data['phone'] ?? '';
-        
+
         Map<String, dynamic> address = data['address'] ?? {};
         streetController.text = address['street'] ?? '';
         cityController.text = address['city'] ?? '';
@@ -103,9 +107,9 @@ class InfoScreenController extends GetxController {
         zipCodeController.text = address['zipCode'] ?? '';
         countryController.text = address['country'] ?? '';
 
-        if (data.containsKey('profileImage')) {
-          profileImage.value = data['profileImage'];
-        }
+        profileImage.value = data['profileImage'] ?? '';
+
+        _updateUserDataCompleteness(); // ✅ Update completeness check
       }
     } catch (e) {
       log('❌ Error loading user data: $e');
@@ -115,9 +119,22 @@ class InfoScreenController extends GetxController {
     }
   }
 
+  void _updateUserDataCompleteness() {
+    isUserDataComplete.value = firstNameController.text.isNotEmpty &&
+        lastNameController.text.isNotEmpty &&
+        emailController.text.isNotEmpty &&
+        phoneController.text.isNotEmpty &&
+        streetController.text.isNotEmpty &&
+        cityController.text.isNotEmpty &&
+        stateController.text.isNotEmpty &&
+        zipCodeController.text.isNotEmpty &&
+        countryController.text.isNotEmpty;
+  }
+
   Future<void> editProfile() async {
     isEditLoading.value = true;
     try {
+      log('Start Editing');
       String userId = CacheHelper.getData(key: AppConstants.userId);
       Map<String, dynamic> updatedData = {
         'firstName': firstNameController.text.trim(),
@@ -133,9 +150,19 @@ class InfoScreenController extends GetxController {
         },
         'updatedAt': DateTime.now().toIso8601String(),
       };
+      log('updatedData is: $updatedData');
 
-      await _firestore.collection('users').doc(userId).update(updatedData);
-      CommonUI.showSnackBar('Profile updated successfully!');
+      await _firestore
+          .collection('users')
+          .doc(userId)
+          .update(updatedData)
+          .then((value) {
+        CommonUI.showSnackBar('Profile updated successfully!');
+        _updateUserDataCompleteness();
+      }).catchError((e) {
+        log('❌ Error updating profile: $e');
+        CommonUI.showSnackBar('Failed to update profile.');
+      });
     } catch (e) {
       log('❌ Error updating profile: $e');
       CommonUI.showSnackBar('Failed to update profile.');
