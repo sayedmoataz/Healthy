@@ -1,27 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/constants.dart';
-
-// For preview
-class CategoryModel {
-  final String name;
-  final String? route;
-
-  CategoryModel({
-    required this.name,
-    this.route,
-  });
-}
-
-List<CategoryModel> demoCategories = [
-  CategoryModel(name: 'All Categories', route: ''),
-  CategoryModel(name: 'Butter', route: ''),
-  CategoryModel(name: 'Ice Cream', route: ''),
-  CategoryModel(name: 'Juice', route: ''),
-  CategoryModel(name: 'Cheese', route: ''),
-];
+import '../../../../core/utils/routing/app_routes.dart';
+import '../../../CategoriesScreen/controllers/CategoriesScreen_controller.dart';
 
 class Categories extends StatelessWidget {
   const Categories({
@@ -30,42 +14,54 @@ class Categories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          ...List.generate(
-            demoCategories.length,
-            (index) => Padding(
-              padding: EdgeInsets.only(
-                left: index == 0
-                    ? AppConstants.defaultPadding
-                    : AppConstants.defaultPadding / 2,
-                right: index == demoCategories.length - 1
-                    ? AppConstants.defaultPadding
-                    : 0,
-              ),
-              child: CategoryBtn(
-                category: demoCategories[index].name,
-                press: () {},
+    CategoriesController controller = Get.put(CategoriesController());
+    return Obx(
+      () => SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            ...List.generate(
+              controller.categories.length,
+              (index) => Padding(
+                padding: EdgeInsets.only(
+                  left: index == 0
+                      ? AppConstants.defaultPadding
+                      : AppConstants.defaultPadding / 2,
+                  right: index == controller.categories.length - 1
+                      ? AppConstants.defaultPadding
+                      : 0,
+                ),
+                child: CategoryBtn(
+                  image: controller.categories[index]['image'],
+                  category: controller.categories[index]['name'],
+                  press: () {
+                    Get.toNamed(
+                      AppRoutes.categoryDetails,
+                      arguments: {
+                        'categoryId': controller.categories[index]['id'],
+                      },
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
 class CategoryBtn extends StatelessWidget {
-  const CategoryBtn({
-    super.key,
-    required this.category,
-    required this.press,
-  });
+  const CategoryBtn(
+      {super.key,
+      required this.category,
+      required this.press,
+      required this.image});
 
   final String category;
   final VoidCallback press;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +69,7 @@ class CategoryBtn extends StatelessWidget {
       onTap: press,
       borderRadius: const BorderRadius.all(Radius.circular(30)),
       child: Container(
-        height: 24.h,
+        height: 85.h,
         padding:
             const EdgeInsets.symmetric(horizontal: AppConstants.defaultPadding),
         decoration: BoxDecoration(
@@ -81,14 +77,26 @@ class CategoryBtn extends StatelessWidget {
           border: Border.all(color: Theme.of(context).dividerColor),
           borderRadius: const BorderRadius.all(Radius.circular(30)),
         ),
-        child: Center(
-          child: Text(
-            category,
-            style: TextStyle(
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context).textTheme.bodyLarge!.color,
-            ),
+        child: Padding(
+          padding: const EdgeInsets.all(5.0),
+          child: Column(
+            children: [
+              Image.network(
+                image,
+                width: 50.w,
+                height: 50.h,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 5.h),
+              Text(
+                category,
+                style: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).textTheme.bodyLarge!.color,
+                ),
+              ),
+            ],
           ),
         ),
       ),

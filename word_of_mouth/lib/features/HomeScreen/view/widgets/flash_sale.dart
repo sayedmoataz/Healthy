@@ -21,33 +21,31 @@ class FlashSale extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Super Flash Sale (only one product)
-        Obx(() {
-          if (controller.isSuperFlashLoading.value) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          if (controller.superFlashSaleProducts.isEmpty) {
-            return const Center(child: Text('No super flash sale products found'));
-          }
-
-          var superFlashSaleProduct = controller.superFlashSaleProducts[0];
-          return BannerMWithCounter(
-            duration: controller.superFlashSaleDuration.value, // Time to finish from now
-            image: superFlashSaleProduct['images'][0], // Image of the product
-            text: AppStrings.saleQuote, // Static text
-            press: () {
-              Get.toNamed(
-                AppRoutes.productScreen,
-                arguments: {
-                  'productId': superFlashSaleProduct['id'],
-                  'collectionName': 'superFlashSaleProducts',
-                },
-              );
-            },
-          );
-        }),
-        const SizedBox(height: AppConstants.defaultPadding / 2),
+        // // Super Flash Sale (only one product)
+        // Obx(() {
+        //   if (controller.isSuperFlashLoading.value) {
+        //     return const Center(child: CircularProgressIndicator());
+        //   }
+        //   if (controller.superFlashSaleProducts.isEmpty) {
+        //     return const Center(child: Text('No super flash sale products found'));
+        //   }
+        //   var superFlashSaleProduct = controller.superFlashSaleProducts[0];
+        //   return BannerMWithCounter(
+        //     duration: controller.superFlashSaleDuration.value, // Time to finish from now
+        //     image: superFlashSaleProduct['images'][0], // Image of the product
+        //     text: AppStrings.saleQuote, // Static text
+        //     press: () {
+        //       Get.toNamed(
+        //         AppRoutes.productScreen,
+        //         arguments: {
+        //           'productId': superFlashSaleProduct['id'],
+        //           'collectionName': 'superFlashSaleProducts',
+        //         },
+        //       );
+        //     },
+        //   );
+        // }),
+        // const SizedBox(height: AppConstants.defaultPadding / 2),
         Padding(
           padding: const EdgeInsets.all(AppConstants.defaultPadding),
           child: Text(

@@ -6,7 +6,7 @@ import '../../../features/CartScreen/controllers/CartScreen_bindings.dart';
 import '../../../features/CartScreen/view/pages/CartScreen_page.dart';
 import '../../../features/CategoriesScreen/controllers/CategoriesScreen_bindings.dart';
 import '../../../features/CategoriesScreen/controllers/category_details_controller.dart';
-import '../../../features/CategoriesScreen/view/pages/CategoriesScreen_page.dart';
+import '../../../features/CategoriesScreen/view/pages/all_categories_page.dart';
 import '../../../features/CategoriesScreen/view/pages/category_details.dart';
 import '../../../features/InfoScreen/controllers/InfoScreen_bindings.dart';
 import '../../../features/InfoScreen/views/pages/InfoScreen_page.dart';
@@ -44,21 +44,21 @@ class AppPages {
       binding: AuthBinding(),
     ),
     GetPage(
-  name: AppRoutes.productScreen,
-  page: () {
-    final args = Get.arguments as Map<String, dynamic>?;
-    if (args == null ||
-        args['productId'] == null ||
-        args['collectionName'] == null) {
-      throw ArgumentError('productId and collectionName must be provided');
-    }
-    return ProductScreenPage(
-      productId: args['productId'] as String,
-      collectionName: args['collectionName'] as String,
-    );
-  },
-  binding: ProductScreenBindings(),
-),
+      name: AppRoutes.productScreen,
+      page: () {
+        final args = Get.arguments as Map<String, dynamic>?;
+        if (args == null ||
+            args['productId'] == null ||
+            args['collectionName'] == null) {
+          throw ArgumentError('productId and collectionName must be provided');
+        }
+        return ProductScreenPage(
+          productId: args['productId'] as String,
+          collectionName: args['collectionName'] as String,
+        );
+      },
+      binding: ProductScreenBindings(),
+    ),
     GetPage(
       name: AppRoutes.landingScreen,
       page: () => const LandingScreen(),

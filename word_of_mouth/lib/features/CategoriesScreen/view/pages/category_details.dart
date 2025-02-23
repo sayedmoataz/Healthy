@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,36 +35,31 @@ class CategoryDetails extends StatelessWidget {
                   return const Center(child: Text('No products found'));
                 }
 
-                return CustomScrollView(
-                  slivers: [
-                    SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                      ),
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          var product = controller.products[index];
-                          return CategoryDetailsItem(
-                            imagePath: product['images'][0],
-                            categoryName: product['name'],
-                            onTap: () {
-                              var productRef = product['productRef'] as DocumentReference;
-                              var productId = productRef.id;
-                              Get.toNamed(
-                                AppRoutes.productScreen,
-                                arguments: {
-                                  'productId': productId,
-                                  'collectionName': 'allProducts',
-                                },
-                              );
-                            },
-                          );
-                        },
-                        childCount: controller.products.length,
-                      ),
-                    ),
-                  ],
+                return ListView.builder(
+                  itemCount: controller.products.length,
+                  itemBuilder: (context, index) {
+                    var product = controller.products[index];
+                    return CategoryDetailsItem(
+                      imagePath: product['images'][0],
+                      categoryName: product['name'],
+                      categoryDescripation: product['description'],
+                      priceAfter: product['priceAfter'],
+                      priceBefore: product['priceBefore'],
+                      productId: product['id'],
+                      onTap: () {
+                        var productRef =
+                            product['productRef'] as DocumentReference;
+                        var productId = productRef.id;
+                        Get.toNamed(
+                          AppRoutes.productScreen,
+                          arguments: {
+                            'productId': productId,
+                            'collectionName': 'allProducts',
+                          },
+                        );
+                      },
+                    );
+                  },
                 );
               }),
             ),

@@ -1,11 +1,14 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/components/custom_snack_bar.dart';
 import '../../../core/services/cache_helper.dart';
+import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/constants.dart';
+import '../../../core/utils/routing/app_routes.dart';
 
 class ProductScreenController extends GetxController {
   final String productId;
@@ -17,9 +20,11 @@ class ProductScreenController extends GetxController {
   });
 
   var isLoading = true.obs;
+  var isAddingToCart = false.obs;
   var product = <String, dynamic>{}.obs;
   var relatedProducts = <Map<String, dynamic>>[].obs;
   var quantity = 1.obs;
+  var selectedSize = ''.obs;
 
   @override
   void onInit() {
@@ -27,8 +32,16 @@ class ProductScreenController extends GetxController {
     fetchProduct();
   }
 
+  void selectSize(String size) {
+    selectedSize.value = size;
+  }
+
+  void selectQuantity(int qty) {
+    quantity.value = qty;
+  }
+
   void increment() {
-    if (quantity.value < 10) {
+    if (quantity.value < 3) {
       quantity.value++;
     }
   }
@@ -145,8 +158,11 @@ class ProductScreenController extends GetxController {
     required double price,
     required int quantity,
     required String image,
+    String? size,
   }) async {
     try {
+      isAddingToCart.value = true;
+      
       CollectionReference cartCollection = FirebaseFirestore.instance
           .collection('users')
           .doc(CacheHelper.getData(key: AppConstants.userId))
@@ -161,18 +177,21 @@ class ProductScreenController extends GetxController {
 
       Map<String, dynamic> products = cartData['products'] ?? {};
 
-      if (products.containsKey(productId)) {
-        int currentQuantity = products[productId]['quantity'];
-        products[productId]['quantity'] = currentQuantity + quantity;
-        products[productId]['itemTotal'] = price * (currentQuantity + quantity);
-        products[productId]['updatedAt'] = DateTime.now().toIso8601String();
+      String cartItemKey = size != null ? '$productId-$size' : productId;
+
+      if (products.containsKey(cartItemKey)) {
+        int currentQuantity = products[cartItemKey]['quantity'];
+        products[cartItemKey]['quantity'] = currentQuantity + quantity;
+        products[cartItemKey]['itemTotal'] = price * (currentQuantity + quantity);
+        products[cartItemKey]['updatedAt'] = DateTime.now().toIso8601String();
       } else {
-        products[productId] = {
+        products[cartItemKey] = {
           'productId': productId,
           'productName': productName,
           'price': price,
           'quantity': quantity,
           'image': image,
+          'size': size,
           'itemTotal': price * quantity,
           'addedAt': DateTime.now().toIso8601String(),
           'updatedAt': DateTime.now().toIso8601String(),
@@ -180,7 +199,6 @@ class ProductScreenController extends GetxController {
       }
 
       await cartDocRef.set({'products': products}, SetOptions(merge: true));
-
       await _updateCartTotals(CacheHelper.getData(key: AppConstants.userId));
 
       log('✅ Item added to cart successfully!');
@@ -188,6 +206,8 @@ class ProductScreenController extends GetxController {
       log('❌ Error adding item to cart: ${e.toString()}');
       CommonUI.showSnackBar('Failed to add item to cart.');
       rethrow;
+    } finally {
+      isAddingToCart.value = false;
     }
   }
 
@@ -230,4 +250,43 @@ class ProductScreenController extends GetxController {
       rethrow;
     }
   }
+
+  Future<void> handleAddToCart(Map<String, dynamic> product) async {
+    if (product['sizes'] != null && selectedSize.value.isEmpty) {
+      CommonUI.showSnackBar('الرجاء اختيار المقاس');
+      return;
+    }
+
+    await addToCart(
+      productId: productId,
+      productName: product['name'],
+      price: (product['priceAfter'] as num?)?.toDouble() ?? 0,
+      quantity: quantity.value,
+      size: selectedSize.value,
+      image: product['images'] != null && product['images'].isNotEmpty
+          ? product['images'][0]
+          : AppAssets.networkImage,
+    );
+
+    Get.dialog(
+      AlertDialog(
+        title: const Text('تمت الإضافة للسلة'),
+        content: const Text('هل تريد الاستمرار في التسوق أم الذهاب إلى السلة؟'),
+        actions: [
+          TextButton(
+            onPressed: () => Get.back(),
+            child: const Text('متابعة التسوق'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Get.back();
+              Get.toNamed(AppRoutes.cartScreen);
+            },
+            child: const Text('الذهاب للسلة'),
+          ),
+        ],
+      ),
+    );
+  }
+
 }

@@ -15,7 +15,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     InfoScreenController controller = Get.find();
-    
+
     return Scaffold(
       body: SafeArea(
         child: Obx(() {
@@ -28,7 +28,8 @@ class EditProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const CustomAppBar(title: AppStrings.editProfile, backable: true),
+                const CustomAppBar(
+                    title: AppStrings.editProfile, backable: true),
                 SizedBox(height: 20.h),
 
                 // Profile Image
@@ -40,9 +41,10 @@ class EditProfileScreen extends StatelessWidget {
                       border: Border.all(color: AppColors.greyColor, width: 1),
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: NetworkImage(controller.profileImage.value.isNotEmpty
-                            ? controller.profileImage.value
-                            : AppAssets.networkImage),
+                        image: NetworkImage(
+                            controller.profileImage.value.isNotEmpty
+                                ? controller.profileImage.value
+                                : AppAssets.networkImage),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -129,10 +131,12 @@ class EditProfileScreen extends StatelessWidget {
                 SizedBox(height: 20.h),
 
                 // Save Button
-                ElevatedButton(
-                  onPressed: () => controller.editProfile(),
-                  child: const Text('Save'),
-                ),
+                controller.isEditLoading.value
+                    ? const CircularProgressIndicator()
+                    : ElevatedButton(
+                        onPressed: () => controller.editProfile(),
+                        child: const Text('Save'),
+                      ),
               ],
             ),
           );
@@ -141,4 +145,3 @@ class EditProfileScreen extends StatelessWidget {
     );
   }
 }
-

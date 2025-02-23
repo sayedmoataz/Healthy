@@ -9,7 +9,7 @@ class CategoriesController extends GetxController {
   var isLoading = true.obs;
   var products = <Map<String, dynamic>>[].obs;
 
-  String? currentCategoryId; // Track the current category ID
+  String? currentCategoryId;
 
   @override
   void onInit() {
@@ -17,8 +17,8 @@ class CategoriesController extends GetxController {
     fetchCategories();
   }
 
-  // Fetch all categories
   Future<void> fetchCategories() async {
+    log('start fetching data');
     try {
       isLoading.value = true;
 
@@ -45,39 +45,39 @@ class CategoriesController extends GetxController {
 
   // Fetch products for a specific category
   Future<void> fetchProducts(String categoryId) async {
-  try {
-    isLoading.value = true;
-    currentCategoryId = categoryId; // Set the current category ID
+    try {
+      isLoading.value = true;
+      currentCategoryId = categoryId; // Set the current category ID
 
-    // Fetch product references for the category
-    var productsSnapshot = await FirebaseFirestore.instance
-        .collection('globalData')
-        .doc('categories')
-        .collection('items')
-        .doc(categoryId)
-        .collection('products')
-        .get();
+      // Fetch product references for the category
+      var productsSnapshot = await FirebaseFirestore.instance
+          .collection('globalData')
+          .doc('categories')
+          .collection('items')
+          .doc(categoryId)
+          .collection('products')
+          .get();
 
-    // Fetch actual product data from the 'allProducts' collection
-    var productsList = <Map<String, dynamic>>[];
-    for (var doc in productsSnapshot.docs) {
-      var productRef = doc['productRef'] as DocumentReference;
-      var productSnapshot = await productRef.get();
+      // Fetch actual product data from the 'allProducts' collection
+      var productsList = <Map<String, dynamic>>[];
+      for (var doc in productsSnapshot.docs) {
+        var productRef = doc['productRef'] as DocumentReference;
+        var productSnapshot = await productRef.get();
 
-      if (productSnapshot.exists) {
-        productsList.add({
-          'id': productSnapshot.id,
-          'productRef': productRef, // Include the productRef
-          ...productSnapshot.data() as Map<String, dynamic>,
-        });
+        if (productSnapshot.exists) {
+          productsList.add({
+            'id': productSnapshot.id,
+            'productRef': productRef, // Include the productRef
+            ...productSnapshot.data() as Map<String, dynamic>,
+          });
+        }
       }
-    }
 
-    products.value = productsList;
-  } catch (e) {
-    log('Error fetching products: $e');
-  } finally {
-    isLoading.value = false;
+      products.value = productsList;
+    } catch (e) {
+      log('Error fetching products: $e');
+    } finally {
+      isLoading.value = false;
+    }
   }
-}
 }
