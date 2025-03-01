@@ -15,28 +15,31 @@ class PrivacyPolicyScreen extends StatelessWidget {
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBar(title: AppStrings.privacyPolicy, backable: true),
-            const SizedBox(height: 20),
-            Obx(() {
-              if (controller.isLoading.value) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  controller.privacyPolicy.value,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomAppBar(
+                  title: AppStrings.privacyPolicy, backable: true),
+              const SizedBox(height: 20),
+              Obx(() {
+                if (controller.isLoading.value) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    controller.privacyPolicy.value,
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                ),
-              );
-            }),
-          ],
+                );
+              }),
+            ],
+          ),
         ),
       ),
     );

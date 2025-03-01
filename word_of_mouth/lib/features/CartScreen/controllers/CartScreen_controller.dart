@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../core/components/custom_snack_bar.dart';
 import '../../../core/services/cache_helper.dart';
+import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/constants.dart';
 import '../models/cart_model.dart';
 
@@ -65,56 +66,74 @@ class CartScreenController extends GetxController {
 
   Future<void> fetchCartData() async {
     try {
-      String userId = CacheHelper.getData(key: AppConstants.userId);
+      // Null check for userId
+      String? userId = CacheHelper.getData(key: AppConstants.userId);
+      if (userId == null) {
+        log('userId is null');
+        _handleEmptyCart();
+        return;
+      }
+
       log('userId is: $userId');
+
       DocumentSnapshot cartSnapshot = await _firestore
           .collection('users')
           .doc(userId)
           .collection('cart')
           .doc('info')
           .get();
+
       log('cartSnapshot is: $cartSnapshot');
+
       if (!cartSnapshot.exists) {
-        log('cartSnapshot exists');
-        cartItems.clear();
-        subtotal.value = 0.0;
-        tax.value = 0.0;
-        total.value = 0.0;
+        log('cartSnapshot does not exist');
+        _handleEmptyCart();
         return;
       }
-      Map<String, dynamic> cartData =
-          cartSnapshot.data() as Map<String, dynamic>;
+
+      // Safely cast and handle potential null data
+      Map<String, dynamic>? cartData =
+          cartSnapshot.data() as Map<String, dynamic>?;
+      if (cartData == null) {
+        log('cartData is null');
+        _handleEmptyCart();
+        return;
+      }
+
       Map<String, dynamic> products = cartData['products'] ?? {};
       List<CartModel> tempCartItems = [];
+
       products.forEach((key, item) {
+        // Null safety for all fields
         tempCartItems.add(
           CartModel(
-            id: item['productId'],
-            name: item['productName'],
-            image: item['image'],
-            price: item['price'],
-            quantity: item['quantity'],
-            priceAfterDiscount: item.containsKey('priceAfterDiscount')
-                ? item['priceAfterDiscount']
-                : null,
-            descripation:
-                item.containsKey('descripation') ? item['descripation'] : null,
+            id: item['productId']?.toString() ?? '',
+            name: item['productName']?.toString() ?? '',
+            image: item['image']?.toString() ?? AppAssets.networkImage,
+            price: (item['price'] ?? 0.0).toDouble(),
+            quantity: (item['quantity'] ?? 1).toInt(),
+            priceAfterDiscount: item['priceAfterDiscount']?.toDouble(),
+            descripation: item['descripation']?.toString(),
           ),
         );
       });
-      log('product added to cart');
+
       cartItems.assignAll(tempCartItems);
-      log('cartItems.assignAll(tempCartItems);');
-      subtotal.value = cartData['subtotal'];
-      log('subtotal');
-      tax.value = cartData['tax'];
-      log('tax');
-      total.value = cartData['total'];
-      log('total');
+      subtotal.value = (cartData['subtotal'] ?? 0.0).toDouble();
+      tax.value = (cartData['tax'] ?? 0.0).toDouble();
+      total.value = (cartData['total'] ?? 0.0).toDouble();
     } catch (e) {
       log('❌ Error fetching cart data: ${e.toString()}');
       CommonUI.showSnackBar('Failed to fetch cart data.');
     }
+  }
+
+  // Helper method to handle empty cart state
+  void _handleEmptyCart() {
+    cartItems.clear();
+    subtotal.value = 0.0;
+    tax.value = 0.0;
+    total.value = 0.0;
   }
 
   Future<void> _updateCartTotals(String userId) async {
@@ -301,16 +320,6 @@ class CartScreenController extends GetxController {
       });
 
       // Clear cart after order creation
-      for (var doc in cartItems.docs) {
-        await _firestore
-            .collection('users')
-            .doc(userId)
-            .collection('cart')
-            .doc(doc.id)
-            .delete();
-      }
-
-      // Reset cart info
       await _firestore
           .collection('users')
           .doc(userId)
@@ -322,6 +331,7 @@ class CartScreenController extends GetxController {
         'discount': 0.0,
         'tax': 0.0,
         'total': 0.0,
+        'products': {}, // Clear the products map
         'lastUpdated': DateTime.now().toIso8601String(),
       });
 

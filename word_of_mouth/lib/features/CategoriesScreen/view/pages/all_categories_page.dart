@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/animations/animation_do.dart';
 import '../../../../core/components/custom_app_bar.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/routing/app_routes.dart';
@@ -35,25 +36,27 @@ class CategoriesScreenPage extends StatelessWidget {
                   return const Center(child: Text('No categories found'));
                 }
 
-                return ListView.builder(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: controller.categories.length,
-                  itemBuilder: (context, index) {
-                    var category = controller.categories[index];
-                    return CategoryItem(
-                      imagePath: category['image'],
-                      categoryName: category['name'],
-                      onTap: () {
-                        // await controller.fetchProducts(category['id']);
-                        Get.toNamed(
-                          AppRoutes.categoryDetails,
-                          arguments: {
-                            'categoryId': category['id'],
-                          },
-                        );
-                      },
-                    );
-                  },
+                return BounceInRight(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(16),
+                    itemCount: controller.categories.length,
+                    itemBuilder: (context, index) {
+                      var category = controller.categories[index];
+                      return CategoryItem(
+                        imagePath: category['image'],
+                        categoryName: category['name'],
+                        onTap: () {
+                          // await controller.fetchProducts(category['id']);
+                          Get.toNamed(
+                            AppRoutes.categoryDetails,
+                            arguments: {
+                              'categoryId': category['id'],
+                            },
+                          );
+                        },
+                      );
+                    },
+                  ),
                 );
               }),
             ),

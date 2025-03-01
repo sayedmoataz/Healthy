@@ -38,7 +38,7 @@ Future<void> addFirestoreData() async {
         'https://healthymilk.net/wp-content/uploads/2023/08/104320690_3372861539390939_4395661989431978374_n-2-480x640.webp',
         'https://healthymilk.net/wp-content/uploads/2019/06/products_04_01-500x668.jpg'
       ],
-      'isFeatured': true,
+      'isFeatured': false,
       'isPopular': true,
       'isFlashSale': false,
       'isSuperFlash': false,
@@ -224,7 +224,7 @@ Future<void> addFirestoreData() async {
       'discount': 16,
       'availableQuantity': 100,
       'description':
-          'A mix of premium nuts including almonds, cashews, and walnuts.',
+          'جبنة كريمي - ٦ زبادي كامل الدسم - حليب شوكولاتة - سمنة بقري',
       'images': [
         'https://healthymilk.net/wp-content/uploads/2023/09/376422216_661987009254920_5700470096080632635_n-1-480x480.jpg'
       ],
@@ -245,11 +245,11 @@ Future<void> addFirestoreData() async {
       'priceAfter': 70,
       'discount': 12,
       'availableQuantity': 60,
-      'description': 'Pure natural honey with a rich and smooth texture.',
+      'description': 'ايس كريم - ٢ حليب القهوة - ٢ لبن رايب',
       'images': [
         'https://healthymilk.net/wp-content/uploads/2023/09/375211710_661987012588253_236628043357793652_n-1-480x480.jpg'
       ],
-      'isFeatured': false,
+      'isFeatured': true,
       'isPopular': false,
       'isFlashSale': false,
       'isSuperFlash': true,
@@ -267,11 +267,11 @@ Future<void> addFirestoreData() async {
       'priceAfter': 35,
       'discount': 12,
       'availableQuantity': 90,
-      'description': 'Natural date syrup, perfect for sweetening dishes.',
+      'description': 'جبنة قريش - لبن كامل الدسم - حبنة متبلة',
       'images': [
         'https://healthymilk.net/wp-content/uploads/2023/09/375174367_661987022588252_195841530605391519_n-1-480x480.jpg'
       ],
-      'isFeatured': false,
+      'isFeatured': true,
       'isPopular': false,
       'isFlashSale': false,
       'isSuperFlash': false,
@@ -288,11 +288,11 @@ Future<void> addFirestoreData() async {
       'priceAfter': 90,
       'discount': 10,
       'availableQuantity': 50,
-      'description': 'Extra virgin olive oil, cold-pressed for maximum flavor.',
+      'description': 'جبنة اسطنبولي - جبنة كريمي - ٦ زبادي كامل الدسم - ٢ لبن رايب',
       'images': [
         'https://healthymilk.net/wp-content/uploads/2023/09/375174367_661987022588252_195841530605391519_n-1-480x480.jpg'
       ],
-      'isFeatured': false,
+      'isFeatured': true,
       'isPopular': true,
       'isFlashSale': false,
       'isSuperFlash': false,
@@ -319,10 +319,9 @@ Future<void> addFirestoreData() async {
       'mango_nectar',
       'chocolate_milk',
       'orange_juice',
-      'pomegranate_juice'
     ],
-    'منتجات جديدة': ['mixed_nuts'],
-    'العروض': ['honey', 'date_syrup', 'olive_oil'],
+    'منتجات جديدة': ['pomegranate_juice'],
+    'العروض': ['honey', 'date_syrup', 'olive_oil', 'mixed_nuts'],
   };
 
   for (var category in categories.entries) {
@@ -408,7 +407,7 @@ Future<void> addFirestoreData() async {
   }
 
   // 🌟 6. Add Featured Products (References to 'allProducts')
-  List<String> featuredProducts = ['istanbul_cheese', 'mixed_nuts'];
+  List<String> featuredProducts = ['honey', 'mixed_nuts', 'date_syrup', 'olive_oil'];
 
   for (var productId in featuredProducts) {
     await firestore

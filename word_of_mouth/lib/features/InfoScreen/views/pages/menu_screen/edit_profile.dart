@@ -97,11 +97,24 @@ class EditProfileScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
 
-                // City
-                CustomTextField(
-                  controller: controller.cityController,
-                  assetName: AppAssets.passwordIcon,
-                  hintText: 'City',
+                // City (Dropdown)
+                DropdownButtonFormField<String>(
+                  value: controller.selectedCity.value.isEmpty
+                      ? null
+                      : controller.selectedCity.value,
+                  onChanged: (String? newValue) {
+                    controller.selectedCity.value = newValue ?? '';
+                  },
+                  items: controller.cities.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  decoration: InputDecoration(
+                    labelText: 'City',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
                 SizedBox(height: 20.h),
 
