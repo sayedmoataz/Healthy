@@ -15,13 +15,13 @@ class ZoomIn extends StatefulWidget {
 
   ZoomIn(
       {this.key,
-        required this.child,
-        this.duration = const Duration(seconds: 3),
-        this.delay = const Duration(milliseconds: 200),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 1.0})
+      required this.child,
+      this.duration = const Duration(seconds: 3),
+      this.delay = const Duration(milliseconds: 200),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 1.0})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -104,13 +104,13 @@ class ZoomOut extends StatefulWidget {
 
   ZoomOut(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 500),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 0.0})
+      required this.child,
+      this.duration = const Duration(milliseconds: 500),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 0.0})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -193,12 +193,12 @@ class JelloIn extends StatefulWidget {
 
   JelloIn(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -284,13 +284,13 @@ class SlideInUp extends StatefulWidget {
 
   SlideInUp(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1500),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1500),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -366,13 +366,13 @@ class SlideInDown extends StatelessWidget {
 
   SlideInDown(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 600),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 600),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -383,14 +383,14 @@ class SlideInDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SlideInUp(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from * -1,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from * -1,
+        child: child,
+      );
 }
 
 class SlideInLeft extends StatefulWidget {
@@ -407,14 +407,14 @@ class SlideInLeft extends StatefulWidget {
 
   SlideInLeft(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 600),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100,
-        this.infinite = false})
+      required this.child,
+      this.duration = const Duration(milliseconds: 600),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100,
+      this.infinite = false})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -491,14 +491,14 @@ class SlideInRight extends StatelessWidget {
 
   SlideInRight(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 600),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100,
-        this.infinite = false})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1200),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100,
+      this.infinite = false})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -531,12 +531,12 @@ class FlipInX extends StatefulWidget {
 
   FlipInX(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -619,12 +619,12 @@ class FlipInY extends StatefulWidget {
 
   FlipInY(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -707,12 +707,12 @@ class FadeIn extends StatefulWidget {
 
   FadeIn(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -787,13 +787,13 @@ class FadeInDown extends StatefulWidget {
 
   FadeInDown(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -877,13 +877,13 @@ class FadeInDownBig extends StatelessWidget {
 
   FadeInDownBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -916,13 +916,13 @@ class FadeInUp extends StatefulWidget {
 
   FadeInUp(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1004,13 +1004,13 @@ class FadeInUpBig extends StatelessWidget {
 
   FadeInUpBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1021,14 +1021,14 @@ class FadeInUpBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeInUp(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from,
+        child: child,
+      );
 }
 
 class FadeInLeft extends StatefulWidget {
@@ -1044,13 +1044,13 @@ class FadeInLeft extends StatefulWidget {
 
   FadeInLeft(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1132,13 +1132,13 @@ class FadeInLeftBig extends StatelessWidget {
 
   FadeInLeftBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1149,14 +1149,14 @@ class FadeInLeftBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeInLeft(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from,
+        child: child,
+      );
 }
 
 class FadeInRight extends StatefulWidget {
@@ -1172,13 +1172,13 @@ class FadeInRight extends StatefulWidget {
 
   FadeInRight(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1260,13 +1260,13 @@ class FadeInRightBig extends StatelessWidget {
 
   FadeInRightBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1200),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1200),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1277,14 +1277,14 @@ class FadeInRightBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeInRight(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from,
+        child: child,
+      );
 }
 
 class FadeOut extends StatefulWidget {
@@ -1299,12 +1299,12 @@ class FadeOut extends StatefulWidget {
 
   FadeOut(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false})
+      required this.child,
+      this.duration = const Duration(milliseconds: 300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1380,13 +1380,13 @@ class FadeOutDown extends StatefulWidget {
 
   FadeOutDown(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1470,13 +1470,13 @@ class FadeOutDownBig extends StatelessWidget {
 
   FadeOutDownBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1487,14 +1487,14 @@ class FadeOutDownBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeOutDown(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from,
+        child: child,
+      );
 }
 
 class FadeOutUp extends StatefulWidget {
@@ -1510,13 +1510,13 @@ class FadeOutUp extends StatefulWidget {
 
   FadeOutUp(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1598,13 +1598,13 @@ class FadeOutUpBig extends StatelessWidget {
 
   FadeOutUpBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1615,14 +1615,14 @@ class FadeOutUpBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeOutUp(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from,
+        child: child,
+      );
 }
 
 class FadeOutLeft extends StatefulWidget {
@@ -1638,13 +1638,13 @@ class FadeOutLeft extends StatefulWidget {
 
   FadeOutLeft(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1726,13 +1726,13 @@ class FadeOutLeftBig extends StatelessWidget {
 
   FadeOutLeftBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1300),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1300),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1743,14 +1743,14 @@ class FadeOutLeftBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeOutLeft(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from,
+        child: child,
+      );
 }
 
 class FadeOutRight extends StatelessWidget {
@@ -1766,13 +1766,13 @@ class FadeOutRight extends StatelessWidget {
 
   FadeOutRight(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 800),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1783,14 +1783,14 @@ class FadeOutRight extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeOutLeft(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from * -1,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from * -1,
+        child: child,
+      );
 }
 
 class FadeOutRightBig extends StatelessWidget {
@@ -1806,13 +1806,13 @@ class FadeOutRightBig extends StatelessWidget {
 
   FadeOutRightBig(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1200),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = false,
-        this.from = 600})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1200),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = false,
+      this.from = 600})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1823,14 +1823,14 @@ class FadeOutRightBig extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => FadeOutLeft(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from * -1,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from * -1,
+        child: child,
+      );
 }
 
 class ElasticIn extends StatefulWidget {
@@ -1845,12 +1845,12 @@ class ElasticIn extends StatefulWidget {
 
   ElasticIn(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1935,14 +1935,14 @@ class ElasticInDown extends StatefulWidget {
 
   ElasticInDown(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 200,
-        this.to = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 200,
+      this.to = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -1980,8 +1980,8 @@ class _ElasticInDownState extends State<ElasticInDown>
 
     falling = Tween<double>(begin: widget.from * -1, end: widget.to * -1)
         .animate(CurvedAnimation(
-        parent: controller!,
-        curve: const Interval(0, 0.30, curve: Curves.linear)));
+            parent: controller!,
+            curve: const Interval(0, 0.30, curve: Curves.linear)));
 
     bouncing = Tween<double>(begin: widget.to * -1, end: 0).animate(
         CurvedAnimation(
@@ -2037,13 +2037,13 @@ class ElasticInUp extends StatelessWidget {
 
   ElasticInUp(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 200})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 200})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2054,15 +2054,15 @@ class ElasticInUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElasticInDown(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from * -1,
-    to: 100,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from * -1,
+        to: 100,
+        child: child,
+      );
 }
 
 class ElasticInLeft extends StatefulWidget {
@@ -2079,14 +2079,14 @@ class ElasticInLeft extends StatefulWidget {
 
   ElasticInLeft(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 200,
-        this.to = 100})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 200,
+      this.to = 100})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2124,8 +2124,8 @@ class _ElasticInLeftState extends State<ElasticInLeft>
 
     falling = Tween<double>(begin: widget.from * -1, end: widget.to * -1)
         .animate(CurvedAnimation(
-        parent: controller!,
-        curve: const Interval(0, 0.30, curve: Curves.linear)));
+            parent: controller!,
+            curve: const Interval(0, 0.30, curve: Curves.linear)));
 
     bouncing = Tween<double>(begin: widget.to * -1, end: 0).animate(
         CurvedAnimation(
@@ -2181,13 +2181,13 @@ class ElasticInRight extends StatelessWidget {
 
   ElasticInRight(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 200})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 200})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2221,13 +2221,13 @@ class BounceInDown extends StatefulWidget {
 
   BounceInDown(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 75})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 75})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2307,13 +2307,13 @@ class BounceInUp extends StatelessWidget {
 
   BounceInUp(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 75})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 75})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2324,14 +2324,14 @@ class BounceInUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BounceInDown(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from * -1,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from * -1,
+        child: child,
+      );
 }
 
 class BounceInLeft extends StatefulWidget {
@@ -2347,13 +2347,13 @@ class BounceInLeft extends StatefulWidget {
 
   BounceInLeft(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 75})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 75})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2435,13 +2435,13 @@ class BounceInRight extends StatelessWidget {
 
   BounceInRight(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 75})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1800),
+      this.delay = const Duration(milliseconds: 0),
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 75})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2452,14 +2452,14 @@ class BounceInRight extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BounceInLeft(
-    duration: duration,
-    delay: delay,
-    controller: controller,
-    manualTrigger: manualTrigger,
-    animate: animate,
-    from: from * -1,
-    child: child,
-  );
+        duration: duration,
+        delay: delay,
+        controller: controller,
+        manualTrigger: manualTrigger,
+        animate: animate,
+        from: from * -1,
+        child: child,
+      );
 }
 
 class Bounce extends StatefulWidget {
@@ -2476,14 +2476,14 @@ class Bounce extends StatefulWidget {
 
   Bounce(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1300),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.from = 50})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1300),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.from = 50})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2571,13 +2571,13 @@ class Flash extends StatefulWidget {
 
   Flash(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2645,10 +2645,10 @@ class _FlashState extends State<Flash> with SingleTickerProviderStateMixin {
               opacity: (controller!.value < 0.25)
                   ? opacityOut1.value
                   : (controller!.value < 0.5)
-                  ? opacityIn1.value
-                  : (controller!.value < 0.75)
-                  ? opacityOut2.value
-                  : opacityIn2.value,
+                      ? opacityIn1.value
+                      : (controller!.value < 0.75)
+                          ? opacityOut2.value
+                          : opacityIn2.value,
               child: widget.child);
         });
   }
@@ -2667,13 +2667,13 @@ class Pulse extends StatefulWidget {
 
   Pulse(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2757,13 +2757,13 @@ class Swing extends StatefulWidget {
 
   Swing(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2853,14 +2853,14 @@ class _SwingState extends State<Swing> with SingleTickerProviderStateMixin {
           double angle = (animationRotation1.value != -0.5)
               ? animationRotation1.value
               : (animationRotation2.value != 0.5)
-              ? animationRotation2.value
-              : (animationRotation3.value != -0.5)
-              ? animationRotation3.value
-              : (animationRotation4.value != 0.4)
-              ? animationRotation4.value
-              : (animationRotation5.value != -0.4)
-              ? animationRotation5.value
-              : animationRotation6.value;
+                  ? animationRotation2.value
+                  : (animationRotation3.value != -0.5)
+                      ? animationRotation3.value
+                      : (animationRotation4.value != 0.4)
+                          ? animationRotation4.value
+                          : (animationRotation5.value != -0.4)
+                              ? animationRotation5.value
+                              : animationRotation6.value;
 
           return Transform.rotate(
             angle: angle,
@@ -2884,14 +2884,14 @@ class Spin extends StatefulWidget {
 
   Spin(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.spins = 1})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.spins = 1})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -2969,14 +2969,14 @@ class SpinPerfect extends StatefulWidget {
 
   SpinPerfect(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.spins = 1})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.spins = 1})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -3054,13 +3054,13 @@ class Dance extends StatefulWidget {
 
   Dance(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 1000),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true})
+      required this.child,
+      this.duration = const Duration(milliseconds: 1000),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'
@@ -3130,8 +3130,8 @@ class _DanceState extends State<Dance> with SingleTickerProviderStateMixin {
           final animation = (step1.value != -0.2)
               ? step1.value
               : (step2.value != 0.2)
-              ? step2.value
-              : step3.value;
+                  ? step2.value
+                  : step3.value;
 
           return Transform(
               alignment: FractionalOffset.center,
@@ -3155,14 +3155,14 @@ class Roulette extends StatefulWidget {
 
   Roulette(
       {this.key,
-        required this.child,
-        this.duration = const Duration(milliseconds: 3500),
-        this.delay = const Duration(milliseconds: 0),
-        this.infinite = false,
-        this.controller,
-        this.manualTrigger = false,
-        this.animate = true,
-        this.spins = 2})
+      required this.child,
+      this.duration = const Duration(milliseconds: 3500),
+      this.delay = const Duration(milliseconds: 0),
+      this.infinite = false,
+      this.controller,
+      this.manualTrigger = false,
+      this.animate = true,
+      this.spins = 2})
       : super(key: key) {
     if (manualTrigger == true && controller == null) {
       throw FlutterError('If you want to use manualTrigger:true, \n\n'

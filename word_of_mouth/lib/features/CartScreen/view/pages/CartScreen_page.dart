@@ -75,8 +75,7 @@ class CartScreenPage extends GetView<CartScreenController> {
                         ),
                         UserInfoRow(
                           icon: Icons.location_on,
-                          text:
-                              '${authController.streetController.text}, ${authController.cityController.text}, ${authController.stateController.text}',
+                          text: '${authController.cityController.text}',
                         ),
                         UserInfoRow(
                           icon: Icons.mobile_friendly,

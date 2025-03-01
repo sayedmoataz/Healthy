@@ -20,6 +20,7 @@ class AuthController extends GetxController {
     required String firstName,
     required String lastName,
     required String password,
+    required String city,
   }) async {
     isLoading.value = true;
     try {
@@ -39,6 +40,7 @@ class AuthController extends GetxController {
           firstName: firstName,
           lastName: lastName,
           phone: mobileNumber,
+          city: city,
         );
 
         CommonUI.showSnackBar('Account created successfully!');
@@ -91,6 +93,7 @@ class AuthController extends GetxController {
     required String firstName,
     required String lastName,
     required String phone,
+    required String city,
   }) async {
     try {
       await _firestore.collection('users').doc(userId).set({
@@ -100,7 +103,7 @@ class AuthController extends GetxController {
         'phone': phone,
         'address': {
           'street': '',
-          'city': '',
+          'city': city,
           'state': '',
           'zipCode': '',
           'country': '',

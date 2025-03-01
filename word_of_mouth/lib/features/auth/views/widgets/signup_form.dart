@@ -24,14 +24,19 @@ class _SignUpFormState extends State<SignUpForm> {
   final _signupFormKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
-
   final _mobileNumberController = TextEditingController();
-
   final _firstNameController = TextEditingController();
-
   final _lastNameController = TextEditingController();
-
   final _passwordController = TextEditingController();
+  final _cityController = TextEditingController();
+
+  List<String> cities = [
+    'Nasr City - Cairo',
+    'Maadi - Cairo',
+    'AlHaram -Giza',
+    'Mansoura',
+    'Aswan'
+  ];
 
   Map<String, String> getFormData() {
     return {
@@ -40,6 +45,7 @@ class _SignUpFormState extends State<SignUpForm> {
       'firstName': _firstNameController.text,
       'lastName': _lastNameController.text,
       'password': _passwordController.text,
+      'city': _cityController.text,
     };
   }
 
@@ -95,6 +101,27 @@ class _SignUpFormState extends State<SignUpForm> {
             keyboardType: TextInputType.visiblePassword,
           ),
           const SizedBox(height: AppConstants.defaultPadding),
+          DropdownButtonFormField<String>(
+            value: _cityController.text.isEmpty ? null : _cityController.text,
+            onChanged: (String? newValue) {
+              setState(() {
+                _cityController.text = newValue!;
+              });
+            },
+            items: cities.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+            decoration: InputDecoration(
+              labelText: 'City',
+              border: OutlineInputBorder(),
+            ),
+            validator: (value) => Validators.validationNull(
+                value.toString(), 'City'),
+          ),
+          const SizedBox(height: AppConstants.defaultPadding),
           Row(
             children: [
               Checkbox(
@@ -134,6 +161,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   firstName: _firstNameController.text,
                   lastName: _lastNameController.text,
                   password: _passwordController.text,
+                  city: _cityController.text,
                 );
               }
             },

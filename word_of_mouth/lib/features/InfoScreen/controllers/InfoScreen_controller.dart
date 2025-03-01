@@ -85,89 +85,74 @@ class InfoScreenController extends GetxController {
     }
   }
 
-  Future<void> loadUserData() async {
-    isEditLoading.value = true;
-    try {
-      String userId = CacheHelper.getData(key: AppConstants.userId);
-      DocumentSnapshot userDoc =
-          await _firestore.collection('users').doc(userId).get();
-
-      if (userDoc.exists) {
-        Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
-
-        firstNameController.text = data['firstName'] ?? '';
-        lastNameController.text = data['lastName'] ?? '';
-        emailController.text = data['email'] ?? '';
-        phoneController.text = data['phone'] ?? '';
-
-        Map<String, dynamic> address = data['address'] ?? {};
-        streetController.text = address['street'] ?? '';
-        cityController.text = address['city'] ?? '';
-        stateController.text = address['state'] ?? '';
-        zipCodeController.text = address['zipCode'] ?? '';
-        countryController.text = address['country'] ?? '';
-
-        profileImage.value = data['profileImage'] ?? '';
-
-        _updateUserDataCompleteness(); // ✅ Update completeness check
-      }
-    } catch (e) {
-      log('❌ Error loading user data: $e');
-      CommonUI.showSnackBar('Failed to load user data.');
-    } finally {
-      isEditLoading.value = false;
-    }
-  }
-
   void _updateUserDataCompleteness() {
     isUserDataComplete.value = firstNameController.text.isNotEmpty &&
-        lastNameController.text.isNotEmpty &&
         emailController.text.isNotEmpty &&
         phoneController.text.isNotEmpty &&
-        streetController.text.isNotEmpty &&
-        cityController.text.isNotEmpty &&
-        stateController.text.isNotEmpty &&
-        zipCodeController.text.isNotEmpty &&
-        countryController.text.isNotEmpty;
+        cityController.text.isNotEmpty;
   }
 
-  Future<void> editProfile() async {
-    isEditLoading.value = true;
+  Future<void> loadUserData() async {
     try {
-      log('Start Editing');
+      isLoading.value = true;
       String userId = CacheHelper.getData(key: AppConstants.userId);
-      Map<String, dynamic> updatedData = {
-        'firstName': firstNameController.text.trim(),
-        'lastName': lastNameController.text.trim(),
-        'phone': phoneController.text.trim(),
-        'email': emailController.text.trim(),
-        'address': {
-          'street': streetController.text.trim(),
-          'city': cityController.text.trim(),
-          'state': stateController.text.trim(),
-          'zipCode': zipCodeController.text.trim(),
-          'country': countryController.text.trim(),
-        },
-        'updatedAt': DateTime.now().toIso8601String(),
-      };
-      log('updatedData is: $updatedData');
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+      Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
 
-      await _firestore
-          .collection('users')
-          .doc(userId)
-          .update(updatedData)
-          .then((value) {
-        CommonUI.showSnackBar('Profile updated successfully!');
-        _updateUserDataCompleteness();
-      }).catchError((e) {
-        log('❌ Error updating profile: $e');
-        CommonUI.showSnackBar('Failed to update profile.');
-      });
+      // Initialize controllers with user data
+      firstNameController.text = userData['firstName'] ?? '';
+      lastNameController.text = userData['lastName'] ?? '';
+      emailController.text = userData['email'] ?? '';
+      phoneController.text = userData['phone'] ?? '';
+      streetController.text = userData['address']['street'] ?? '';
+      selectedCity.value = userData['address']['city'] ?? ''; // Initialize selected city
+      stateController.text = userData['address']['state'] ?? '';
+      zipCodeController.text = userData['address']['zipCode'] ?? '';
+      countryController.text = userData['address']['country'] ?? '';
+      profileImage.value = userData['profileImage'] ?? '';
+
+      isLoading.value = false;
     } catch (e) {
-      log('❌ Error updating profile: $e');
+      log('❌ Error fetching user data: ${e.toString()}');
+      CommonUI.showSnackBar('Failed to fetch user data.');
+    }
+  }
+
+  // Update the city in Firestore when saving the profile
+  Future<void> editProfile() async {
+    try {
+      isEditLoading.value = true;
+      String userId = CacheHelper.getData(key: AppConstants.userId);
+
+      await _firestore.collection('users').doc(userId).update({
+        'firstName': firstNameController.text,
+        'lastName': lastNameController.text,
+        'phone': phoneController.text,
+        'address': {
+          'street': streetController.text,
+          'city': selectedCity.value, // Save the selected city
+          'state': stateController.text,
+          'zipCode': zipCodeController.text,
+          'country': countryController.text,
+        },
+      });
+
+      CommonUI.showSnackBar('Profile updated successfully!');
+      isEditLoading.value = false;
+    } catch (e) {
+      log('❌ Error updating profile: ${e.toString()}');
       CommonUI.showSnackBar('Failed to update profile.');
-    } finally {
       isEditLoading.value = false;
     }
   }
+
+  final List<String> cities = [
+    'NasrCityCairo',
+    'MaadiCairo',
+    'FaisalGiza',
+    'Alsharkyah',
+    'Aswan',
+  ];
+  var selectedCity = ''.obs;
+
 }
